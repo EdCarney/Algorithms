@@ -1,0 +1,17 @@
+int insertionSort(double * inputArray, int numElements) {
+    double key;
+    int j;
+    if (numElements <= 0)
+        return -1;
+
+    for (int i = 1; i < numElements; ++i) {
+        key = inputArray[i];
+        j = i - 1;
+        while (j >= 0 && inputArray[j] > key) {
+            inputArray[j + 1] = inputArray[j];
+            --j;
+        }
+        inputArray[j + 1] = key;
+    }
+    return 0;
+}
