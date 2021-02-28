@@ -14,11 +14,12 @@ struct tnode {
 struct tnode* treapInsert(struct tnode* rootNode, struct tnode* newNode);
 
 struct tnode* treapInsert(struct tnode* rootNode, struct tnode* newNode) {
-    
+
     // if root node is null, no treap exists yet
     if (rootNode == NULL)
         return newNode;
 
+    
 
     return rootNode;
 }
