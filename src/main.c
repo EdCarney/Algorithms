@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <time.h>
-#include "utilities.h"
-#include "selection-sort.h"
-#include "insertion-sort.h"
+#include "utils/utilities.h"
+#include "sorting-algos/selection-sort.h"
+#include "sorting-algos/insertion-sort.h"
 
-const char * inputFile = ".\\..\\data\\array-input-1.txt";
+const char * inputFile = "./../data/array-input-1.txt";
 clock_t clockTime;
 double runtime;
 
