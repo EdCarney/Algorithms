@@ -1,7 +1,7 @@
+# make pushd and popd quiet!
 pushd () {
     command pushd "$@" > /dev/null
 }
-
 popd () {
     command popd "$@" > /dev/null
 }

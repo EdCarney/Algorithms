@@ -32,3 +32,13 @@ struct bstNode* treeMinimum(struct bstNode* rootNode);
 // node for the maximum value. Returns a pointer to the
 // node in the tree with the maximum value.
 struct bstNode* treeMaximum(struct bstNode* rootNode);
+
+// Finds the node in the tree that is printed after the
+// provided node in an in-order tree walk. Returns NULL
+// if the provided node has the maximum value.
+struct bstNode* treeSuccessor(struct bstNode* rootNode);
+
+// Finds the node in the tree that is printed before the
+// provided node in an in-order tree walk. Returns NULL
+// if the provided node has the minimum value.
+struct bstNode* treePredecessor(struct bstNode* rootNode);
