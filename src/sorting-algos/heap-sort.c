@@ -11,7 +11,9 @@ struct heap* initializeHeap() {
 struct heap* initializeHeapFromArray(double inputArray[], int numElements) {
     struct heap* heap = initializeHeap();
     heap->values = (double*)calloc(numElements, sizeof(double));
-    heap->heapSize = numElements;
+    heap->length = numElements;
+    for (int i = 0; i < numElements; ++i)
+        heap->values[i] = inputArray[i];
     return heap;
 }
 
@@ -43,10 +45,10 @@ void maxHeapify(struct heap* heap, int index) {
     int right = calcRightNode(index);
     int largest = index;
 
-    if (left <= heap->heapSize && heap->values[left] > heap->values[largest])
+    if (left < heap->heapSize && heap->values[left] > heap->values[largest])
         largest = left;
     
-    if (right <= heap->heapSize && heap->values[right] > heap->values[largest])
+    if (right < heap->heapSize && heap->values[right] > heap->values[largest])
         largest = right;
 
     if (largest != index) {
@@ -59,6 +61,6 @@ void maxHeapify(struct heap* heap, int index) {
 
 struct heap* buildMaxHeap(struct heap* heap) {
     heap->heapSize = heap->length;
-    for (int i = (int)floor(heap->length / 2); i != 0; --i)
+    for (int i = (int)floor((heap->length)/ 2); i >= 0; --i)
         maxHeapify(heap, i);
 }
