@@ -5,7 +5,7 @@
 #include "sorting-algos/insertion-sort.h"
 #include "data-structures/binary-search-tree.h"
 
-const char * inputFile = "./../data/array-input-1.txt";
+const char * inputFile = "./../data/array-input-2.txt";
 clock_t clockTime;
 double runtime;
 
@@ -19,8 +19,7 @@ int main() {
     ret += testInsertionSort();
     ret += testSelectionSort();
     ret += testBinarySearchTree();
-
-    printf("\n");
+    puts("");
 
     return ret < 0 ? -1 : 0;
 }
@@ -85,21 +84,37 @@ int testBinarySearchTree() {
 
     // print elements in order
     inOrderTreeWalk(rootNode);
-    printf("\n");
+    puts("");
 
     // print min and max
     printf("BST Min: %.1f\n", treeMinimum(rootNode)->key);
     printf("BST Max: %.1f\n", treeMaximum(rootNode)->key);
 
     // search for element
-    printf("Element 90 in tree: %s\n", treeSearch(rootNode, 90) ? "true" : "false" );
-    printf("Element 258 in tree: %s\n", treeSearch(rootNode, 258) ? "true" : "false");
+    double goodSearch = 12, badSearch = 258;
+    printf("Element %.1f in tree: %s\n", goodSearch, treeSearch(rootNode, goodSearch) ? "true" : "false" );
+    printf("Element %.1f in tree: %s\n", badSearch, treeSearch(rootNode, badSearch) ? "true" : "false");
 
     // print root node, successor, and predecessor
     printf("Root node key: %.1f\n", rootNode->key);
     printf("Root node predecessor: %.1f\n", treePredecessor(rootNode)->key);
     printf("Root node successor: %.1f\n", treeSuccessor(rootNode)->key);
 
-    printf("\n");
+    // insert new node and print again
+    double insertKey = 30;
+    printf("Inserting new node in BST with key: %.1f\n", insertKey);
+    struct bstNode* newNode = initializeBstNodeWithKey(insertKey);
+    treeInsert(rootNode, newNode);
+    inOrderTreeWalk(rootNode);
+    puts("");
+
+    // remove added node and print again
+    printf("Deleting node in BST with key: %.1f\n", insertKey);
+    treeDelete(&rootNode, newNode);
+    inOrderTreeWalk(rootNode);
+    puts("\nDeleting root node in BST");
+    treeDelete(&rootNode, rootNode);
+    inOrderTreeWalk(rootNode);
+    puts("");
     return 0;
 }

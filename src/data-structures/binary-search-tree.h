@@ -10,6 +10,12 @@ struct bstNode {
 // Returns a pointer to the allocated memory.
 struct bstNode* initializeBstNode();
 
+// Allocates memory for a new BST node and sets all values
+// to their defaults (numerical as zero, pointers as NULL),
+// except for the key, which is set to the provided value.
+// Returns a pointer to the allocated memory.
+struct bstNode* initializeBstNodeWithKey(double key);
+
 // Sets the field values for the provided node to thier
 // default values (numerical as zero, pointers as NULL).
 void setBstNodeDefaults(struct bstNode* node);
@@ -18,6 +24,21 @@ void setBstNodeDefaults(struct bstNode* node);
 // the double values as the BST keys. Returns a pointer
 // to the root node of the resulting BST.
 struct bstNode* constructBst(double array[], int numElements);
+
+// Inserts a new node into a BST rooted at the provided
+// root node.
+void treeInsert(struct bstNode* rootNode, struct bstNode* newNode);
+
+// Deletes a given node from the BST and updates child node
+// pointing as needed. Need to pass a double pointer to the
+// rootNode in case we need to change the node.
+void treeDelete(struct bstNode** rootNode, struct bstNode* deleteNode);
+
+// Transplants the provided toRemove and toTransplant nodes.
+// The child references of the toRemove node should be updated
+// prior to being used further as they will be pointing to the
+// same child and parent nodes as toTransplant when returned.
+void treeTransplant(struct bstNode** rootNode, struct bstNode* toRemove, struct bstNode* toTransplant);
 
 // Walks the binary search tree and prints the values out
 // in order. That is, it will print the left value of the
@@ -55,3 +76,8 @@ struct bstNode* treeSuccessor(struct bstNode* rootNode);
 // provided node in an in-order tree walk. Returns NULL
 // if the provided node has the minimum value.
 struct bstNode* treePredecessor(struct bstNode* rootNode);
+
+// Prints information for the provided node, including
+// key value, parent key value, left node key value,
+// and right node key value.
+void printBstNode(struct bstNode* node);

@@ -12,6 +12,12 @@ struct bstNode* initializeBstNode() {
     return newNode;
 }
 
+struct bstNode* initializeBstNodeWithKey(double key) {
+    struct bstNode* newNode = initializeBstNode();
+    newNode->key = key;
+    return newNode;
+}
+
 void setBstNodeDefaults(struct bstNode* node) {
     node->key = 0;
     node->lnode = NULL;
@@ -21,37 +27,79 @@ void setBstNodeDefaults(struct bstNode* node) {
 
 struct bstNode* constructBst(double array[], int numElements) {
     // set root node (this will be returned)
-    struct bstNode* rootNode = initializeBstNode();
-    rootNode->key = array[0];
+    struct bstNode* rootNode = initializeBstNodeWithKey(array[0]);
 
     // populate rest of the tree
-    struct bstNode *x, *y;
+    struct bstNode* newNode;
     for (int i = 1; i < numElements; ++i) {
-        x = rootNode;
+        newNode = initializeBstNodeWithKey(array[i]);
+        treeInsert(rootNode, newNode);
+    }
+    return rootNode;
+}
 
-        // find empty spot for the node
-        while (x) {
-            y = x; // trailing pointer
-            if (array[i] < x->key)
-                x = x->lnode;
-            else
-                x = x->rnode;
-        }
+void treeInsert(struct bstNode* rootNode, struct bstNode* newNode) {
+    struct bstNode *x = rootNode, *y = NULL;
 
-        // add the node
-        if (array[i] < y->key) {
-            y->lnode = initializeBstNode();
-            y->lnode->key = array[i];
-            y->lnode->parent = y->lnode;
-        }
-        else {
-            y->rnode = initializeBstNode();
-            y->rnode->key = array[i];
-            y->rnode->parent = y->rnode;
-        }
+    // find empty spot for the node
+    while (x) {
+        y = x; // trailing pointer
+        if (newNode->key < x->key)
+            x = x->lnode;
+        else
+            x = x->rnode;
     }
 
-    return rootNode;
+    // set new node parent
+    newNode->parent = y;
+
+    // add the node
+    if (newNode->key < y->key)
+        y->lnode = newNode;
+    else
+        y->rnode = newNode;
+}
+
+void treeDelete(struct bstNode** rootNode, struct bstNode* deleteNode) { 
+    if (!deleteNode->lnode) {
+        // swap with right node, works even if right
+        // node is NULL
+        treeTransplant(rootNode, deleteNode, deleteNode->rnode);
+    }
+    else if (!deleteNode->rnode) {
+        // swap with left node
+        treeTransplant(rootNode, deleteNode, deleteNode->lnode);
+    }
+    else {
+        // deleteNode has left and right children
+        struct bstNode* successor = treeSuccessor(deleteNode);
+        if (successor != deleteNode->rnode) {
+            // successor is not first right child of deleteNode,
+            // so need to swap the successor and its right child node
+            // (note the successor will never have left children)
+            treeTransplant(rootNode, successor, successor->rnode);
+            successor->rnode = deleteNode->rnode;
+            successor->rnode->parent = successor;
+        }
+        // swap successor and deleteNode and update child node
+        // pointing
+        treeTransplant(rootNode, deleteNode, successor);
+        successor->lnode = deleteNode->lnode;
+        successor->lnode->parent = successor;
+    }
+    free(deleteNode);
+}
+
+void treeTransplant(struct bstNode** rootNode, struct bstNode* toRemove, struct bstNode* toTransplant) {
+    if (!toRemove->parent)
+        *rootNode = toTransplant;
+    else if (toRemove->parent->lnode == toRemove)
+        toRemove->parent->lnode = toTransplant;
+    else
+        toRemove->parent->rnode = toTransplant;
+
+    if (toTransplant)
+        toTransplant->parent = toRemove->parent;
 }
 
 void inOrderTreeWalk(struct bstNode* rootNode) {
@@ -64,9 +112,8 @@ void inOrderTreeWalk(struct bstNode* rootNode) {
 }
 
 struct bstNode* treeSearch(struct bstNode* rootNode, double key) {
-    if (!rootNode || key == rootNode->key) {
-        return rootNode;
-    }
+    if (!rootNode || key == rootNode->key)
+            return rootNode;
     if (key < rootNode->key)
         return treeSearch(rootNode->lnode, key);
     else
@@ -123,4 +170,27 @@ struct bstNode* treePredecessor(struct bstNode* rootNode) {
         parentNode = parentNode->parent;
     }
     return parentNode;
+}
+
+void printBstNode(struct bstNode* node) {
+    puts("------------------");
+    if (node) {
+    printf("Key: %.1f\n", node->key);
+    if (node->parent)
+        printf("Parent Key: %.1f\n", node->parent->key);
+    else
+        puts("Parent Key: N/A");
+    if (node->lnode)
+        printf("LNode Key: %.1f\n", node->lnode->key);
+    else
+        puts("LNode Key: N/A");
+    if (node->rnode)
+        printf("RNode Key: %.1f\n", node->rnode->key);
+    else
+        puts("RNode Key: N/A");
+    }
+    else {
+        puts("NULL Node");
+    }
+    puts("------------------");
 }
