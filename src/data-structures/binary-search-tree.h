@@ -1,10 +1,23 @@
 struct bstNode {
-    int key;
-    double value;
+    double key;
     struct bstNode* lnode;
     struct bstNode* rnode;
     struct bstNode* parent;
 };
+
+// Allocates memory for a new BST node and sets all values
+// to their defaults (numerical as zero, pointers as NULL).
+// Returns a pointer to the allocated memory.
+struct bstNode* initializeBstNode();
+
+// Sets the field values for the provided node to thier
+// default values (numerical as zero, pointers as NULL).
+void setBstNodeDefaults(struct bstNode* node);
+
+// Creates a BST from a provided array of doubles, using
+// the double values as the BST keys. Returns a pointer
+// to the root node of the resulting BST.
+struct bstNode* constructBst(double array[], int numElements);
 
 // Walks the binary search tree and prints the values out
 // in order. That is, it will print the left value of the
