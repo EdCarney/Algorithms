@@ -30,10 +30,11 @@ int readArrayFromFile(const char* fileName, double ** arrPtr, int * countPtr) {
 }
 
 void printDoubleArray(double * array, int numElements) {
-    printf("[ ");
+    // printf("[ ");
     for (int i = 0; i < numElements; ++i)
         printf("%.1f, ", array[i]);
-    printf("]\n");
+    // printf("]\n");
+    printf("\n");
 }
 
 void printIntArray(int * array, int numElements) {
