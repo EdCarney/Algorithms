@@ -18,7 +18,7 @@ void setBstNodeDefaults(struct bstNode* node) {
     node->rnode = NULL;
     node->parent = NULL;
 }
-// TODO
+
 struct bstNode* constructBst(double array[], int numElements) {
     // set root node (this will be returned)
     struct bstNode* rootNode = initializeBstNode();
