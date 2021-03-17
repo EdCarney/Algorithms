@@ -61,6 +61,6 @@ void maxHeapify(struct heap* heap, int index) {
 
 struct heap* buildMaxHeap(struct heap* heap) {
     heap->heapSize = heap->length;
-    for (int i = (int)floor((heap->length)/ 2); i >= 0; --i)
+    for (int i = (int)floor((heap->length) / 2); i >= 0; --i)
         maxHeapify(heap, i);
 }

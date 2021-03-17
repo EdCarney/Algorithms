@@ -6,7 +6,7 @@
 #include "sorting-algos/heap-sort.h"
 #include "data-structures/binary-search-tree.h"
 
-const char * inputFile = "./../data/array-input-6.txt";
+const char * inputFile = "./../data/array-input-5.txt";
 const int printArrays = 0;
 clock_t clockTime;
 double runtime;
