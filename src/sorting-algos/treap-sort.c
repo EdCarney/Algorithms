@@ -143,3 +143,39 @@ struct tnode* initializeTreapFromArray(char inputArray[], int numElements) {
     }
     return root;
 }
+
+int verifyBstProperties(struct tnode* rootNode) {
+    int res = 0;
+
+    if (!rootNode)
+        return res;
+
+    if (rootNode->lnode)
+        res += rootNode->key > rootNode->lnode->key ? 0 : 1;
+
+    if (rootNode->rnode)
+        res += rootNode->key < rootNode->rnode->key ? 0 : 1;
+
+    res += verifyBstProperties(rootNode->lnode);
+    res += verifyBstProperties(rootNode->rnode);
+
+    return res;
+}
+
+int verifyMaxHeapProperties(struct tnode* rootNode) {
+    int res = 0;
+
+    if (!rootNode)
+        return res;
+
+    if (rootNode->lnode)
+        res += rootNode->priority > rootNode->lnode->priority ? 0 : 1;
+
+    if (rootNode->rnode)
+        res += rootNode->priority > rootNode->rnode->priority ? 0 : 1;
+
+    res += verifyBstProperties(rootNode->lnode);
+    res += verifyBstProperties(rootNode->rnode);
+
+    return res;
+}

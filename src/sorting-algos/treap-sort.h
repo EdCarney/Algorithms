@@ -55,3 +55,16 @@ struct tnode* initializeTreapNode();
 // priority values to each entry prior to insertion in the tree.
 // Returns a pointer to the root node of the treap.
 struct tnode* initializeTreapFromArray(char inputArray[], int numElements);
+
+// Verifies that the treap satisfies the binary search tree properties.
+// Namely, that the key value of a left child is always less than its
+// parent, and that the key value of a right child is always greater
+// than its parent.
+// Returns an integer indicating how many violations exist in the treap.
+int verifyBstProperties(struct tnode* rootNode);
+
+// Verifies that the treap satisfies max heap properties. Namely, that
+// the priority value of the parent is always greater than the priority
+// value of either of its children.
+// Returns an integer indicating how many violations exist in the treap.
+int verifyMaxHeapProperties(struct tnode* rootNode);

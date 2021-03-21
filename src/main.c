@@ -181,5 +181,11 @@ int testTreapSort() {
     struct tnode* root = initializeTreapFromArray(unsortedArray, numElements);
 
     printTreeKeyOrder(root);
-    printTreeInfoDepthFirst(root);
+    //printTreeInfoDepthFirst(root);
+
+    printf("'A' in the treap: %s\n", treapSearch(root, 'A') ? "true" : "false");
+    printf("'r' in the treap: %s\n", treapSearch(root, 'r') ? "true" : "false");
+
+    printf("Treap satisfies BST properties: %s\n", verifyBstProperties(root) > 0 ? "false" : "true");
+    printf("Treap satisfies Max-Heap properties: %s\n", verifyMaxHeapProperties(root) > 0 ? "false" : "true");
 }
