@@ -1,23 +1,10 @@
 #include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <time.h>
+#include "treap-sort.h"
 
-
-struct tnode {
-    char key;
-    int priority;
-    struct tnode* parent;
-    struct tnode* lnode;
-    struct tnode* rnode;
-};
-
-// Inserts a new node into a treap.
-// Returns a pointer to the root node of the treap.
-struct tnode* treapInsert(struct tnode* rootNode, struct tnode* newNode);
-
-void rotateCW(struct tnode* rootNode);
-
-void rotateCCW(struct tnode* rootNode);
-
-void rotateCW(struct tnode* rootNode) {
+struct tnode* rotateCW(struct tnode* rootNode) {
     struct tnode* childNode = rootNode->lnode;
 
     childNode->parent = rootNode->parent;
@@ -32,12 +19,13 @@ void rotateCW(struct tnode* rootNode) {
     if (childNode->rnode)
         childNode->rnode->parent = rootNode;
 
-    childNode->parent = rootNode->parent;
     rootNode->parent = childNode;
     childNode->rnode = rootNode;
+
+    return childNode;
 }
 
-void rotateCCW(struct tnode* rootNode) {
+struct tnode* rotateCCW(struct tnode* rootNode) {
     struct tnode* childNode = rootNode->rnode;
 
     childNode->parent = rootNode->parent;
@@ -52,9 +40,10 @@ void rotateCCW(struct tnode* rootNode) {
     if (childNode->lnode)
         childNode->lnode->parent = rootNode;
 
-    childNode->parent = rootNode->parent;
     rootNode->parent = childNode;
     childNode->lnode = rootNode;
+
+    return childNode;
 }
 
 struct tnode* treapInsert(struct tnode* rootNode, struct tnode* newNode) {
@@ -64,57 +53,93 @@ struct tnode* treapInsert(struct tnode* rootNode, struct tnode* newNode) {
 
     if (newNode->key < rootNode->key) {
         rootNode->lnode = treapInsert(rootNode->lnode, newNode);
-        if (rootNode->priority < rootNode->lnode->priority)
-            rotateCW(rootNode);
+        rootNode->lnode->parent = rootNode;
+        if (rootNode->priority < rootNode->lnode->priority) {
+            rootNode = rotateCW(rootNode);
+        }
     }
     else {
         rootNode->rnode = treapInsert(rootNode->rnode, newNode);
-        if (rootNode->priority < rootNode->rnode->priority)
-            rotateCCW(rootNode);
+        rootNode->rnode->parent = rootNode;
+        if (rootNode->priority < rootNode->rnode->priority) {
+            rootNode = rotateCCW(rootNode);
+        }
     }
-
-    return rootNode;
-
-
-
-    struct tnode *x = rootNode, *y = NULL;
-
-    // first, insert the node based on the key
-
-    // find empty spot for the node
-    while(x) {
-        y = x; // trailing pointer
-        if (newNode->key < x->key)
-            x = x->lnode;
-        else
-            x = x->rnode;
-    }
-
-    // set the new node parent
-    newNode->parent = y;
-
-    // add the node
-    if (newNode->key < y->key)
-        y->lnode = newNode;
-    else
-        y->rnode = newNode;
-
-    // now, need to max-treapify
-    while(y) {
-        maxTreapify(y);
-        y = y->parent;
-    }
-
     return rootNode;
 }
 
-void maxTreapify(struct tnode* parentNode) {
-    struct tnode* largestNode = parentNode;
-
-    if (parentNode->lnode->priority > largestNode->priority)
-        largestNode = parentNode->lnode;
+bool treapSearch(struct tnode* rootNode, char searchValue) {
+    if (!rootNode)
+        return false;
     
-    if (parentNode->rnode->priority > largestNode->priority)
-        largestNode = parentNode->rnode;
+    if (rootNode->key == searchValue)
+        return true;
 
+    if (searchValue > rootNode->key)
+        return treapSearch(rootNode->rnode, searchValue);
+    else
+        return treapSearch(rootNode->lnode, searchValue);
+}
+
+void printTreeInfoDepthFirst(struct tnode* rootNode) {
+    if (!rootNode)
+        return;
+
+    printf("---------------\n");
+
+    printf("Parent: ");
+    printTNode(rootNode);
+
+    printf("Left Child: ");
+    if (rootNode->lnode)
+        printTNode(rootNode->lnode);
+    else
+        printf("NULL\n");
+
+    printf("Right Child: ");
+    if (rootNode->rnode)
+        printTNode(rootNode->rnode);
+    else
+        printf("NULL\n");
+
+    printf("---------------\n");
+
+    printTreeInfoDepthFirst(rootNode->lnode);
+    printTreeInfoDepthFirst(rootNode->rnode);
+}
+
+void printTreeKeyOrder(struct tnode* rootNode) {
+    if (!rootNode)
+        return;
+    printTreeKeyOrder(rootNode->lnode);
+    printTNode(rootNode);
+    printTreeKeyOrder(rootNode->rnode);
+}
+
+void printTNode(struct tnode* nodeToPrint) {
+    printf("{ key: %c, priority: %d }\n",
+        nodeToPrint->key,
+        nodeToPrint->priority);
+}
+
+struct tnode* initializeTreapNode() {
+    struct tnode* node = malloc(sizeof(struct tnode));
+    node->key = 0;
+    node->lnode = NULL;
+    node->rnode = NULL;
+    node->parent = NULL;
+    node->priority = -1;
+    return node;
+}
+
+struct tnode* initializeTreapFromArray(char inputArray[], int numElements) {
+    struct tnode *node, *root = NULL;
+    srand(time(NULL));
+    for (int i = 0; i < numElements; ++i) {
+        node = initializeTreapNode();
+        node->key = inputArray[i];
+        node->priority = rand();
+        root = treapInsert(root, node);
+    }
+    return root;
 }

@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdbool.h> 
 #include "utils/utilities.h"
 #include "sorting-algos/selection-sort.h"
 #include "sorting-algos/insertion-sort.h"
 #include "sorting-algos/heap-sort.h"
+#include "sorting-algos/treap-sort.h"
 #include "data-structures/binary-search-tree.h"
 
-const char * inputFile = "./../data/array-input-5.txt";
-const int printArrays = 0;
+const char * inputFile = "./../data/char-arrays/string-input-1.txt";
+const bool printArrays = true;
 clock_t clockTime;
 double runtime;
 
@@ -15,14 +17,16 @@ int testInsertionSort();
 int testSelectionSort();
 int testBinarySearchTree();
 int testHeapSort();
+int testTreapSort();
 
 int main() {
     int ret = 0;
 
-    ret += testInsertionSort();
-    ret += testSelectionSort();
-    ret += testBinarySearchTree();
-    ret += testHeapSort();
+    // ret += testInsertionSort();
+    // ret += testSelectionSort();
+    // ret += testBinarySearchTree();
+    // ret += testHeapSort();
+    ret += testTreapSort();
     puts("");
 
     return ret < 0 ? -1 : 0;
@@ -163,4 +167,19 @@ int testHeapSort() {
         printDoubleArray(heap->values, heap->length);
 
     return 0;
+}
+
+int testTreapSort() {
+    char* unsortedArray;
+    int numElements;
+    printf("\nTREAP SORT\n");
+    if (readCharArrayFromFile(inputFile, &unsortedArray, &numElements) < 0) {
+        printf("ERROR: Could not read array from file: %s\n", inputFile);
+        return -1;
+    }
+
+    struct tnode* root = initializeTreapFromArray(unsortedArray, numElements);
+
+    printTreeKeyOrder(root);
+    printTreeInfoDepthFirst(root);
 }

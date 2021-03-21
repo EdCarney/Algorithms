@@ -1,5 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
+#include "utilities.h"
+
+int readCharArrayFromFile(const char* fileName, char ** arrPtr, int * countPtr) {
+    return readLimitedCharArrayFromFile(fileName, arrPtr, countPtr, CHAR_MIN, CHAR_MAX);
+}
+
+int readLimitedCharArrayFromFile(const char* fileName, char ** arrPtr, int * countPtr, char minVal, char maxVal) {
+    FILE* fp;
+    int numElements = 0, count = 0;
+    char *ret, c;
+
+    if (!(fp = fopen(fileName, "r"))) {
+        return -1;
+    }
+
+    while ((c = fgetc(fp)) != EOF)
+        if (c >= minVal && c <= maxVal)
+            ++numElements;
+        
+    if (!(ret = (char*)calloc(numElements, sizeof(char))))
+        return -1;
+
+    rewind(fp);
+
+    while ((c = fgetc(fp)) != EOF)
+        if (c >= minVal && c <= maxVal)
+            ret[count++] = c;
+
+    *arrPtr = ret;
+    *countPtr = numElements;
+    return 0;
+}
 
 int readArrayFromFile(const char* fileName, double ** arrPtr, int * countPtr) {
     FILE* fp;
@@ -8,18 +41,18 @@ int readArrayFromFile(const char* fileName, double ** arrPtr, int * countPtr) {
     int numElements = 0, counter = 0;
     double* ret;
 
-    if ((fp = fopen(fileName, "r")) == NULL)
+    if (!(fp = fopen(fileName, "r")))
         return -1;
 
-    while (fgets(line, 10, fp) != NULL)
+    while (fgets(line, 10, fp))
         ++numElements;
 
-    if ((ret = (double*)calloc(numElements, sizeof(double))) == NULL)
+    if (!(ret = (double*)calloc(numElements, sizeof(double))))
         return -1;
 
     rewind(fp);
 
-    while (fgets(line, 10, fp) != NULL)
+    while (fgets(line, 10, fp))
         ret[counter++] = strtod(line, &ptr);
 
     fclose(fp);
