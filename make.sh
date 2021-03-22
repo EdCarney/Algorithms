@@ -7,7 +7,12 @@ popd () {
 }
 
 # remove old files
-rm -f bin/*
+if [ -d "bin" ]
+then
+    rm -f bin/*
+else
+    mkdir bin
+fi
 rm -f *.exe
 echo "Removed old compiled files"
 

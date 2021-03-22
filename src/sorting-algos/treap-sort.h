@@ -6,7 +6,7 @@ struct tnode {
     struct tnode* rnode;
 };
 
-enum priorityAssignment{ random, charBased, none };
+enum priorityAssignment{ randPri, charBasedPri, noPri };
 
 // Performs a clockwise rotation of the treap about the
 // provided root node. This will cause the root node's

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <sys/time.h>
 #include <stdbool.h> 
 #include "utils/utilities.h"
 #include "sorting-algos/treap-sort.h"
@@ -7,12 +8,13 @@
 const char *treapInputFile = "./../data/string-input-1.txt";
 struct timeval start_t, finish_t;
 
-int executeProblem();
+double executeProblem();
 
 int main() {
     const char *dataInputFile = "./../data/textbook.txt";
     char *dataCharArray;
-    int numDataElem, ret = 0;
+    double runtime = 0;
+    int numDataElem, numRuns = 5;
 
     // get the array to search against
     if (readCharArrayFromFile(dataInputFile, &dataCharArray, &numDataElem) < 0) {
@@ -20,19 +22,28 @@ int main() {
         return -1;
     }
 
-    printf("\nPROBLEM 4\n");
-    ret += executeProblem(dataCharArray, numDataElem, random);
+    printf("\nPROBLEM 4: Random Priorities\n");
+    for (int i = 0; i < numRuns; ++i)
+        runtime += executeProblem(dataCharArray, numDataElem, randPri);
+    printf("Average Search Running Time (us): %f\n", runtime / (double)numRuns);
+    runtime = 0;
 
-    printf("\nPROBLEM 5\n");
-    ret += executeProblem(dataCharArray, numDataElem, charBased);
+    printf("\nPROBLEM 5: Character-Based Priorities\n");
+    for (int i = 0; i < numRuns; ++i)
+        runtime += executeProblem(dataCharArray, numDataElem, charBasedPri);
+    printf("Average Search Running Time (us): %f\n", runtime / (double)numRuns);
+    runtime = 0;
 
-    printf("\nPROBLEM 6\n");
-    ret += executeProblem(dataCharArray, numDataElem, none);
+    printf("\nPROBLEM 6: No Priorities\n");
+    for (int i = 0; i < numRuns; ++i)
+        runtime += executeProblem(dataCharArray, numDataElem, noPri);
+    printf("Average Search Running Time (us): %f\n", runtime / (double)numRuns);
+    runtime = 0;
 
-    return ret < 0 ? -1 : 0;
+    return 0;
 }
 
-int executeProblem(char *dataCharArray, int numDataElem, enum priorityAssignment priAssignment) {
+double executeProblem(char *dataCharArray, int numDataElem, enum priorityAssignment priAssignment) {
     char *treapCharArray;
     int numTreapElem;
     bool searchResult;
@@ -46,6 +57,12 @@ int executeProblem(char *dataCharArray, int numDataElem, enum priorityAssignment
     // create random treap
     struct tnode* root = initializeTreapFromArray(treapCharArray, numTreapElem, priAssignment);
 
+    gettimeofday(&start_t, NULL);
     for (int i = 0; i < numDataElem; ++i)
         searchResult = treapSearch(root, dataCharArray[i]);
+    gettimeofday(&finish_t, NULL);
+
+    double total_t = (double)(finish_t.tv_usec - start_t.tv_usec);
+    printf("Search Running Time (us): %f\n", total_t);
+    return total_t;
 }

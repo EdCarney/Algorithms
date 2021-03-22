@@ -139,9 +139,9 @@ struct tnode* initializeTreapFromArray(char inputArray[], int numElements, enum 
         node = initializeTreapNode();
         node->key = inputArray[i];
 
-        if (priAssignment == random)
+        if (priAssignment == randPri)
             node->priority = rand();
-        else if (priAssignment == charBased)
+        else if (priAssignment == charBasedPri)
             node->priority = getCharBasedPriority(node->key);
         else
             node->priority = 0;
