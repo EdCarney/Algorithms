@@ -4,39 +4,48 @@
 #include "utils/utilities.h"
 #include "sorting-algos/treap-sort.h"
 
-const char * inputFile = "./../data/string-input-1.txt";
-const bool printArrays = true;
-clock_t clockTime;
-double runtime;
+const char *treapInputFile = "./../data/string-input-1.txt";
+struct timeval start_t, finish_t;
 
-int testTreapSort();
+int executeProblem();
 
 int main() {
-    int ret = 0;
+    const char *dataInputFile = "./../data/textbook.txt";
+    char *dataCharArray;
+    int numDataElem, ret = 0;
 
-    ret += testTreapSort();
-    puts("");
+    // get the array to search against
+    if (readCharArrayFromFile(dataInputFile, &dataCharArray, &numDataElem) < 0) {
+        printf("ERROR: Could not read array from file: %s\n", dataInputFile);
+        return -1;
+    }
+
+    printf("\nPROBLEM 4\n");
+    ret += executeProblem(dataCharArray, numDataElem, random);
+
+    printf("\nPROBLEM 5\n");
+    ret += executeProblem(dataCharArray, numDataElem, charBased);
+
+    printf("\nPROBLEM 6\n");
+    ret += executeProblem(dataCharArray, numDataElem, none);
 
     return ret < 0 ? -1 : 0;
 }
 
-int testTreapSort() {
-    char* unsortedArray;
-    int numElements;
-    printf("\nTREAP SORT\n");
-    if (readCharArrayFromFile(inputFile, &unsortedArray, &numElements) < 0) {
-        printf("ERROR: Could not read array from file: %s\n", inputFile);
+int executeProblem(char *dataCharArray, int numDataElem, enum priorityAssignment priAssignment) {
+    char *treapCharArray;
+    int numTreapElem;
+    bool searchResult;
+
+    // get the char array to create the treap
+    if (readCharArrayFromFile(treapInputFile, &treapCharArray, &numTreapElem) < 0) {
+        printf("ERROR: Could not read array from file: %s\n", treapInputFile);
         return -1;
     }
 
-    struct tnode* root = initializeTreapFromArray(unsortedArray, numElements);
+    // create random treap
+    struct tnode* root = initializeTreapFromArray(treapCharArray, numTreapElem, priAssignment);
 
-    printTreeKeyOrder(root);
-    //printTreeInfoDepthFirst(root);
-
-    printf("'A' in the treap: %s\n", treapSearch(root, 'A') ? "true" : "false");
-    printf("'r' in the treap: %s\n", treapSearch(root, 'r') ? "true" : "false");
-
-    printf("Treap satisfies BST properties: %s\n", verifyBstProperties(root) > 0 ? "false" : "true");
-    printf("Treap satisfies Max-Heap properties: %s\n", verifyMaxHeapProperties(root) > 0 ? "false" : "true");
+    for (int i = 0; i < numDataElem; ++i)
+        searchResult = treapSearch(root, dataCharArray[i]);
 }

@@ -1,13 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <limits.h>
 #include "utilities.h"
 
-int readCharArrayFromFile(const char* fileName, char ** arrPtr, int * countPtr) {
-    return readLimitedCharArrayFromFile(fileName, arrPtr, countPtr, CHAR_MIN, CHAR_MAX);
+bool isCapitalAlphabetChar(char c) {
+    return (c >= 'A' && c <= 'Z') ? true : false;
 }
 
-int readLimitedCharArrayFromFile(const char* fileName, char ** arrPtr, int * countPtr, char minVal, char maxVal) {
+bool isLowerAlphabetChar(char c) {
+    return (c >= 'a' && c <= 'z') ? true : false;
+}
+
+char capatilizeChar(char c) {
+    if (isCapitalAlphabetChar(c))
+        return c;
+    return c - 32;
+}
+
+int readCharArrayFromFile(const char* fileName, char ** arrPtr, int * countPtr) {
     FILE* fp;
     int numElements = 0, count = 0;
     char *ret, c;
@@ -17,7 +28,7 @@ int readLimitedCharArrayFromFile(const char* fileName, char ** arrPtr, int * cou
     }
 
     while ((c = fgetc(fp)) != EOF)
-        if (c >= minVal && c <= maxVal)
+        if (isCapitalAlphabetChar(c) || isLowerAlphabetChar(c))
             ++numElements;
         
     if (!(ret = (char*)calloc(numElements, sizeof(char))))
@@ -25,9 +36,12 @@ int readLimitedCharArrayFromFile(const char* fileName, char ** arrPtr, int * cou
 
     rewind(fp);
 
-    while ((c = fgetc(fp)) != EOF)
-        if (c >= minVal && c <= maxVal)
+    while ((c = fgetc(fp)) != EOF) {
+        if (isCapitalAlphabetChar(c))
             ret[count++] = c;
+        else if (isLowerAlphabetChar(c))
+            ret[count++] = capatilizeChar(c);
+    }
 
     *arrPtr = ret;
     *countPtr = numElements;
@@ -60,19 +74,4 @@ int readArrayFromFile(const char* fileName, double ** arrPtr, int * countPtr) {
     *arrPtr = ret;
     *countPtr = numElements;
     return 0;
-}
-
-void printDoubleArray(double * array, int numElements) {
-    // printf("[ ");
-    for (int i = 0; i < numElements; ++i)
-        printf("%.1f, ", array[i]);
-    // printf("]\n");
-    printf("\n");
-}
-
-void printIntArray(int * array, int numElements) {
-    printf("[ ");
-    for (int i = 0; i < numElements; ++i)
-        printf("%d, ", array[i]);
-    printf("]\n");
 }

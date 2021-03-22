@@ -132,13 +132,20 @@ struct tnode* initializeTreapNode() {
     return node;
 }
 
-struct tnode* initializeTreapFromArray(char inputArray[], int numElements) {
+struct tnode* initializeTreapFromArray(char inputArray[], int numElements, enum priorityAssignment priAssignment) {
     struct tnode *node, *root = NULL;
     srand(time(NULL));
     for (int i = 0; i < numElements; ++i) {
         node = initializeTreapNode();
         node->key = inputArray[i];
-        node->priority = rand();
+
+        if (priAssignment == random)
+            node->priority = rand();
+        else if (priAssignment == charBased)
+            node->priority = getCharBasedPriority(node->key);
+        else
+            node->priority = 0;
+
         root = treapInsert(root, node);
     }
     return root;
@@ -178,4 +185,61 @@ int verifyMaxHeapProperties(struct tnode* rootNode) {
     res += verifyBstProperties(rootNode->rnode);
 
     return res;
+}
+
+int getCharBasedPriority(char c) {
+    if (c == 'A')
+        return 24;
+    else if (c == 'B')
+        return 7;
+    else if (c == 'C')
+        return 14;
+    else if (c == 'D')
+        return 17;
+    else if (c == 'E')
+        return 26;
+    else if (c == 'F')
+        return 10;
+    else if (c == 'G')
+        return 8;
+    else if (c == 'H')
+        return 18;
+    else if (c == 'I')
+        return 22;
+    else if (c == 'J')
+        return 4;
+    else if (c == 'K')
+        return 5;
+    else if (c == 'L')
+        return 16;
+    else if (c == 'M')
+        return 13;
+    else if (c == 'N')
+        return 19;
+    else if (c == 'O')
+        return 23;
+    else if (c == 'P')
+        return 12;
+    else if (c == 'Q')
+        return 2;
+    else if (c == 'R')
+        return 20;
+    else if (c == 'S')
+        return 21;
+    else if (c == 'T')
+        return 25;
+    else if (c == 'U')
+        return 15;
+    else if (c == 'V')
+        return 6;
+    else if (c == 'W')
+        return 11;
+    else if (c == 'X')
+        return 3;
+    else if (c == 'Y')
+        return 9;
+    else if (c == 'Z')
+        return 1;
+    else
+        return 0;
 }
