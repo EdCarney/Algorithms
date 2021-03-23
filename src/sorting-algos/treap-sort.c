@@ -81,41 +81,6 @@ bool treapSearch(struct tnode* rootNode, char searchValue) {
         return treapSearch(rootNode->lnode, searchValue);
 }
 
-void printTreeInfoDepthFirst(struct tnode* rootNode) {
-    if (!rootNode)
-        return;
-
-    printf("---------------\n");
-
-    printf("Parent: ");
-    printTNode(rootNode);
-
-    printf("Left Child: ");
-    if (rootNode->lnode)
-        printTNode(rootNode->lnode);
-    else
-        printf("NULL\n");
-
-    printf("Right Child: ");
-    if (rootNode->rnode)
-        printTNode(rootNode->rnode);
-    else
-        printf("NULL\n");
-
-    printf("---------------\n");
-
-    printTreeInfoDepthFirst(rootNode->lnode);
-    printTreeInfoDepthFirst(rootNode->rnode);
-}
-
-void printTreeKeyOrder(struct tnode* rootNode) {
-    if (!rootNode)
-        return;
-    printTreeKeyOrder(rootNode->lnode);
-    printTNode(rootNode);
-    printTreeKeyOrder(rootNode->rnode);
-}
-
 void printTNode(struct tnode* nodeToPrint) {
     printf("{ key: %c, priority: %d }\n",
         nodeToPrint->key,
@@ -149,42 +114,6 @@ struct tnode* initializeTreapFromArray(char inputArray[], int numElements, enum 
         root = treapInsert(root, node);
     }
     return root;
-}
-
-int verifyBstProperties(struct tnode* rootNode) {
-    int res = 0;
-
-    if (!rootNode)
-        return res;
-
-    if (rootNode->lnode)
-        res += rootNode->key > rootNode->lnode->key ? 0 : 1;
-
-    if (rootNode->rnode)
-        res += rootNode->key < rootNode->rnode->key ? 0 : 1;
-
-    res += verifyBstProperties(rootNode->lnode);
-    res += verifyBstProperties(rootNode->rnode);
-
-    return res;
-}
-
-int verifyMaxHeapProperties(struct tnode* rootNode) {
-    int res = 0;
-
-    if (!rootNode)
-        return res;
-
-    if (rootNode->lnode)
-        res += rootNode->priority > rootNode->lnode->priority ? 0 : 1;
-
-    if (rootNode->rnode)
-        res += rootNode->priority > rootNode->rnode->priority ? 0 : 1;
-
-    res += verifyBstProperties(rootNode->lnode);
-    res += verifyBstProperties(rootNode->rnode);
-
-    return res;
 }
 
 int getCharBasedPriority(char c) {

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <limits.h>
 #include "utilities.h"
 
 bool isCapitalAlphabetChar(char c) {
@@ -42,34 +41,6 @@ int readCharArrayFromFile(const char* fileName, char ** arrPtr, int * countPtr) 
         else if (isLowerAlphabetChar(c))
             ret[count++] = capatilizeChar(c);
     }
-
-    *arrPtr = ret;
-    *countPtr = numElements;
-    return 0;
-}
-
-int readArrayFromFile(const char* fileName, double ** arrPtr, int * countPtr) {
-    FILE* fp;
-    char line[10];
-    char* ptr;
-    int numElements = 0, counter = 0;
-    double* ret;
-
-    if (!(fp = fopen(fileName, "r")))
-        return -1;
-
-    while (fgets(line, 10, fp))
-        ++numElements;
-
-    if (!(ret = (double*)calloc(numElements, sizeof(double))))
-        return -1;
-
-    rewind(fp);
-
-    while (fgets(line, 10, fp))
-        ret[counter++] = strtod(line, &ptr);
-
-    fclose(fp);
 
     *arrPtr = ret;
     *countPtr = numElements;

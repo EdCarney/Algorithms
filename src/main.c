@@ -5,18 +5,18 @@
 #include "utils/utilities.h"
 #include "sorting-algos/treap-sort.h"
 
-const char *treapInputFile = "./../data/string-input-1.txt";
+const char *treapInputFile = "./data/treap-input.txt";
 struct timeval start_t, finish_t;
 
 double executeProblem();
 
 int main() {
-    const char *dataInputFile = "./../data/textbook.txt";
+    const char *dataInputFile = "./data/textbook.txt";
     char *dataCharArray;
     double runtime = 0;
     int numDataElem, numRuns = 5;
 
-    // get the array to search against
+    // get the data array to search against
     if (readCharArrayFromFile(dataInputFile, &dataCharArray, &numDataElem) < 0) {
         printf("ERROR: Could not read array from file: %s\n", dataInputFile);
         return -1;
@@ -54,9 +54,10 @@ double executeProblem(char *dataCharArray, int numDataElem, enum priorityAssignm
         return -1;
     }
 
-    // create random treap
+    // create treap
     struct tnode* root = initializeTreapFromArray(treapCharArray, numTreapElem, priAssignment);
 
+    // search for data elements (and record running time)
     gettimeofday(&start_t, NULL);
     for (int i = 0; i < numDataElem; ++i)
         searchResult = treapSearch(root, dataCharArray[i]);

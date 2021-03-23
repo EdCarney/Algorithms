@@ -1,3 +1,4 @@
+// Struct for individual treap nodes.
 struct tnode {
     char key;
     int priority;
@@ -6,6 +7,7 @@ struct tnode {
     struct tnode* rnode;
 };
 
+// Indicates how to assign node priorities in the treap.
 enum priorityAssignment{ randPri, charBasedPri, noPri };
 
 // Performs a clockwise rotation of the treap about the
@@ -36,35 +38,10 @@ struct tnode* treapInsert(struct tnode* rootNode, struct tnode* newNode);
 // false otherwise.
 bool treapSearch(struct tnode* rootNode, char searchValue);
 
-// Prints the teap info node-by-node in a depth-first manner.
-// Information for each node and its children are displayed.
-void printTreeInfoDepthFirst(struct tnode* rootNode);
-
-// Prints the treap in key order by doing an in-order BST-style
-// tree walk based on the key values.
-void printTreeKeyOrder(struct tnode* rootNode);
-
-// Prints the key and priority values of the provided treap node
-// followed by a new line character.
-void printTNode(struct tnode* nodeToPrint);
-
 // Initializes a new treap node with NULL values for pointer and
 // char fields and -1 for numeric fields.
 // Returns a pointer to the allocated treap node.
 struct tnode* initializeTreapNode();
-
-// Verifies that the treap satisfies the binary search tree properties.
-// Namely, that the key value of a left child is always less than its
-// parent, and that the key value of a right child is always greater
-// than its parent.
-// Returns an integer indicating how many violations exist in the treap.
-int verifyBstProperties(struct tnode* rootNode);
-
-// Verifies that the treap satisfies max heap properties. Namely, that
-// the priority value of the parent is always greater than the priority
-// value of either of its children.
-// Returns an integer indicating how many violations exist in the treap.
-int verifyMaxHeapProperties(struct tnode* rootNode);
 
 // Initializes a new treap from a given char array. Assigns random
 // priority values to each entry prior to insertion in the tree.
