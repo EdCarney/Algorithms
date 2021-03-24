@@ -1,6 +1,16 @@
 # Overview
 This repo branch contains code required for ENPM809X Project 1 (2021 Spring Semester).
 
+# Source Control
+This code is available on GitHub at https://github.com/EdCarney/Algorithms.git on the **ENPM809X-Project1** branch.
+
+To clone the repository, ensure git is installed locally on your machine and execute the following in your command line:
+```
+git clone https://github.com/EdCarney/Algorithms.git
+cd Algorithms
+git checkout ENPM809X-Project1
+```
+
 # Repository Layout
 ```
 .
@@ -15,9 +25,11 @@ This repo branch contains code required for ENPM809X Project 1 (2021 Spring Seme
 ```
 
 # Compilation and Execution
-This project is intended to be compiled on a *nix platform (i.e. Linux or MacOS distribution).
-There is a **makefile** that can be used to compile the code. This outputs *.o files for the treap and 
-utility code and a **main.exe** file. The **main.exe** file can be run directly to output the project results.
+This project is intended to be compiled using make and gcc on a *nix platform (i.e. Linux or MacOS distribution) or on a
+Windows platform with MinGW installed (and appropriate configuration to allow calling make and gcc from the CLI).
+
+There is a **makefile** that can be used to compile the code. This outputs *.o files for the treap and utility code and
+a **main.exe** file. The **main.exe** file can be run directly to output the project results.
 
 In the project root directory, execute:
 ```
