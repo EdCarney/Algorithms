@@ -1,15 +1,12 @@
-// Checks if the provided character is a capital-case character
-// value. Returns true if capital-case, false otherwise.
-bool isCapitalAlphabetChar(char c);
 
-// Checks if the provided character is a lower-case character
-// value. Returns true if lower-case, false otherwise.
-bool isLowerAlphabetChar(char c);
+struct adjNode {
+    int vertexNumber;
+    int weight;
+    struct adjNode* next;
+};
 
-// Capitalizes the provided lower-case character.
-char capatilizeChar(char c);
-
-// Reads a character array from the provided file name. The provided
-// array pointer and count pointer are updated to point to the
-// created array and counter values.
-int readCharArrayFromFile(const char* fileName, char ** arrPtr, int * countPtr);
+// Initializes an adjacency list from the provided file. Assumes that there are n^2
+// entries in the input file, where n is the number of vertices in the graph. The
+// weight value 999 is used to indicate that there is no edge between two vertices.
+// Updates the provided adjacencyList to point to the newly created adjacency list.
+int readAdjacencyListFromFile(const char* fileName, int numVertices, struct adjNode* adjacencyList[]);

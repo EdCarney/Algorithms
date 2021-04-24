@@ -1,48 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include "utilities.h"
 
-bool isCapitalAlphabetChar(char c) {
-    return (c >= 'A' && c <= 'Z') ? true : false;
+struct adjNode* initializeAdjacencyNode() {
+    struct adjNode* node = malloc(sizeof(struct adjNode));
+    node->vertexNumber = -1;
+    node->weight = -1;
+    node->next = NULL;
+    return node;
 }
 
-bool isLowerAlphabetChar(char c) {
-    return (c >= 'a' && c <= 'z') ? true : false;
-}
-
-char capatilizeChar(char c) {
-    if (isCapitalAlphabetChar(c))
-        return c;
-    return c - 32;
-}
-
-int readCharArrayFromFile(const char* fileName, char ** arrPtr, int * countPtr) {
+int readAdjacencyListFromFile(const char* fileName, int numVertices, struct adjNode ** adjListPtr) {
     FILE* fp;
-    int numElements = 0, count = 0;
-    char *ret, c;
+    struct adjNode *ret, *currNode;
+    int weight = 0;
 
-    if (!(fp = fopen(fileName, "r"))) {
-        return -1;
-    }
-
-    while ((c = fgetc(fp)) != EOF)
-        if (isCapitalAlphabetChar(c) || isLowerAlphabetChar(c))
-            ++numElements;
-        
-    if (!(ret = (char*)calloc(numElements, sizeof(char))))
+    if (!(fp = fopen(fileName, "r")))
         return -1;
 
-    rewind(fp);
+    // initalize adjacency list with default node values
+    for (int i = 0; i < numVertices; ++i)
 
-    while ((c = fgetc(fp)) != EOF) {
-        if (isCapitalAlphabetChar(c))
-            ret[count++] = c;
-        else if (isLowerAlphabetChar(c))
-            ret[count++] = capatilizeChar(c);
+    if (!(ret = (struct adjNode*)calloc(numVertices, sizeof(struct adjNode))))
+        return -1;
+
+    for (int i = 0; i < numVertices; ++i) {
+        currNode = &ret[i];
+
+        for (int j = 1; j <= numVertices; ++j) {
+            fscanf(fp, "%d", &weight);
+            if (weight != 999) {
+                currNode->vertexNumber = j;
+                currNode->weight = weight;
+                currNode->next = initializeAdjacencyNode();
+                currNode = currNode->next;
+            }
+        }
+        currNode = NULL;
     }
 
-    *arrPtr = ret;
-    *countPtr = numElements;
-    return 0;
+    *adjListPtr = ret;
+
+    fclose(fp);
 }
