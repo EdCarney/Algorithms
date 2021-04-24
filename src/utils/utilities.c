@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "utilities.h"
 
-struct adjNode* initializeAdjacencyNode() {
+struct adjNode* initializeAdjNode() {
     struct adjNode* node = malloc(sizeof(struct adjNode));
     node->vertexNumber = -1;
     node->weight = -1;
@@ -10,9 +11,18 @@ struct adjNode* initializeAdjacencyNode() {
     return node;
 }
 
-int readAdjacencyListFromFile(const char* fileName, int numVertices, struct adjNode ** adjListPtr) {
+struct adjNode* initializeAdjNodeWithVals(int vertex, int weight) {
+    struct adjNode* node = initializeAdjNode();
+    node->vertexNumber = vertex;
+    node->weight = weight;
+
+    return node;
+}
+
+int readAdjacencyListFromFile(const char* fileName, int numVertices, struct adjNode ** adjListPtr[]) {
     FILE* fp;
-    struct adjNode *ret, *currNode;
+    struct adjNode **ret, *currNode, *headNode;
+    bool firstNode = false;
     int weight = 0;
 
     if (!(fp = fopen(fileName, "r")))
@@ -21,25 +31,30 @@ int readAdjacencyListFromFile(const char* fileName, int numVertices, struct adjN
     // initalize adjacency list with default node values
     for (int i = 0; i < numVertices; ++i)
 
-    if (!(ret = (struct adjNode*)calloc(numVertices, sizeof(struct adjNode))))
+    if (!(ret = (struct adjNode**)calloc(numVertices, sizeof(struct adjNode*))))
         return -1;
 
     for (int i = 0; i < numVertices; ++i) {
-        currNode = &ret[i];
+        ret[i] = initializeAdjNode();
+        currNode = ret[i];
 
         for (int j = 1; j <= numVertices; ++j) {
             fscanf(fp, "%d", &weight);
             if (weight != 999) {
                 currNode->vertexNumber = j;
                 currNode->weight = weight;
-                currNode->next = initializeAdjacencyNode();
+                currNode->next = initializeAdjNode();
                 currNode = currNode->next;
             }
         }
-        currNode = NULL;
+
+        // remove the ternary value
+         currNode = ret[i];
+         while (currNode->next->vertexNumber > 0)
+            currNode = currNode->next;
+        currNode->next = NULL;
     }
 
-    *adjListPtr = ret;
-
     fclose(fp);
+    *adjListPtr = ret;
 }
