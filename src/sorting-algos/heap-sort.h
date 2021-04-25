@@ -32,8 +32,11 @@ int calcLeftNode(int i);
 // heap node at the provided index.
 int calcRightNode(int i);
 
-// Performs an in-place sort of the provided heap.
-void heapSort(struct heap* heap);
+// Performs an in-place max sort of the provided heap.
+void maxHeapSort(struct heap* heap);
+
+// Performs an in-place max sort of the provided heap.
+void minHeapSort(struct heap* heap);
 
 // Updates the heap to maintain the max-heap property at the
 // provided index. Note that any child trees off of the heap
@@ -41,6 +44,16 @@ void heapSort(struct heap* heap);
 // to the max-heap property.
 void maxHeapify(struct heap* heap, int index);
 
+// Updates the heap to maintain the min-heap property at the
+// provided index. Note that any child trees off of the heap
+// node at the provided index are assumed to already adhere
+// to the min-heap property.
+void minHeapify(struct heap* heap, int index);
+
 // Contructs a max heap via an in-place reordering of the heap
 // nodes. Returns a pointer to the max heap.
 struct heap* buildMaxHeap(struct heap* heap);
+
+// Contructs a min heap via an in-place reordering of the heap
+// nodes. Returns a pointer to the max heap.
+struct heap* buildMinHeap(struct heap* heap);

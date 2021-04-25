@@ -22,14 +22,25 @@ int calcParentNode(int i) {
 }
 
 int calcLeftNode(int i) {
-    return 2 * i;
+    return (2 * (i + 1)) - 1;
 }
 
 int calcRightNode(int i) {
-    return 2 * i + 1;
+    return 2 * (i + 1);
 }
 
-void heapSort(struct heap* heap) {
+void minHeapSort(struct heap *heap) {
+    buildMinHeap(heap);
+    for (int i = heap->length - 1; i > 0; --i) {
+        double temp = heap->values[0];
+        heap->values[0] = heap->values[i];
+        heap->values[i] = temp;
+        --(heap->heapSize);
+        minHeapify(heap, 0);
+    }
+}
+
+void maxHeapSort(struct heap *heap) {
     buildMaxHeap(heap);
     for (int i = heap->length - 1; i > 0; --i) {
         double temp = heap->values[0];
@@ -59,8 +70,33 @@ void maxHeapify(struct heap* heap, int index) {
     }
 }
 
+void minHeapify(struct heap* heap, int index) {
+    int left = calcLeftNode(index);
+    int right = calcRightNode(index);
+    int smallest = index;
+
+    if (left < heap->heapSize && heap->values[left] < heap->values[smallest])
+        smallest = left;
+    
+    if (right < heap->heapSize && heap->values[right] < heap->values[smallest])
+        smallest = right;
+
+    if (smallest != index) {
+        double temp = heap->values[index];
+        heap->values[index] = heap->values[smallest];
+        heap->values[smallest] = temp;
+        minHeapify(heap, smallest);
+    }
+}
+
 struct heap* buildMaxHeap(struct heap* heap) {
     heap->heapSize = heap->length;
     for (int i = (int)floor((heap->length) / 2); i >= 0; --i)
         maxHeapify(heap, i);
+}
+
+struct heap* buildMinHeap(struct heap* heap) {
+    heap->heapSize = heap->length;
+    for (int i = (int)floor((heap->length) / 2); i >= 0; --i)
+        minHeapify(heap, i);
 }

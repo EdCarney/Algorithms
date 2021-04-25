@@ -8,7 +8,7 @@
 #include "sorting-algos/treap-sort.h"
 #include "data-structures/binary-search-tree.h"
 
-const char * inputFile = "./../data/char-arrays/string-input-1.txt";
+const char * inputFile = "./../data/double-arrays/array-input-2.txt";
 const bool printArrays = true;
 clock_t clockTime;
 double runtime;
@@ -25,8 +25,8 @@ int main() {
     // ret += testInsertionSort();
     // ret += testSelectionSort();
     // ret += testBinarySearchTree();
-    // ret += testHeapSort();
-    ret += testTreapSort();
+    ret += testHeapSort();
+    // ret += testTreapSort();
     puts("");
 
     return ret < 0 ? -1 : 0;
@@ -158,7 +158,7 @@ int testHeapSort() {
     struct heap* heap = initializeHeapFromArray(unsortedArray, numElements);
 
     clockTime = clock();
-    heapSort(heap);
+    minHeapSort(heap);
     clockTime = clock() - clockTime;
     runtime = clockTime * 1000 / CLOCKS_PER_SEC;
     printf("Total time taken (ms): %f\n", runtime);
