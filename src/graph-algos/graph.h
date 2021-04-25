@@ -1,5 +1,8 @@
 struct graph
 {
+    int numVertices;
+    int numEdges;
+
     // List of all vertices in the graph.
     struct vertex *vertices;
 
