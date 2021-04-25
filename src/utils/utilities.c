@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include "utilities.h"
 
 struct adjNode* initializeAdjNode() {
@@ -15,7 +12,6 @@ struct adjNode* initializeAdjNodeWithVals(int vertex, int weight) {
     struct adjNode* node = initializeAdjNode();
     node->vertexNumber = vertex;
     node->weight = weight;
-
     return node;
 }
 
