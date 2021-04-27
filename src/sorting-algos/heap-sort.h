@@ -1,11 +1,12 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "../graph-algos/graph.h"
 
 struct heap {
     int heapSize;
     int length;
-    double* values;
+    struct edge* values;
 };
 
 // Allocates memory for a new heap and sets all values
