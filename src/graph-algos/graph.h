@@ -1,3 +1,7 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "../utils/utilities.h"
+
 struct graph
 {
     int numVertices;
@@ -10,7 +14,7 @@ struct graph
     struct edge *edges;
 
     // Adjacency list for the graph.
-    struct vertex **adjacent;
+    struct adjNode **adjacent;
 };
 
 struct vertex
