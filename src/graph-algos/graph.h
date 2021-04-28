@@ -50,6 +50,6 @@ int createGraphEdgesFromFile(const char* fileName, struct graph *graph);
 // entries in the input file, where n is the number of vertices in the graph. The
 // weight value 999 is used to indicate that there is no edge between two vertices.
 // Updates the provided adjacencyList to point to the newly created adjacency list.
-int createGraphAdjListFromFile(const char* fileName, int numVertices, struct adjNode ** adjListPtr[]);
+int createGraphAdjListFromFile(const char* fileName, struct graph *graph);
 
 struct adjNode* initializeAdjNode();
