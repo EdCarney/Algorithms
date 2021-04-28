@@ -1,5 +1,5 @@
 main.exe: heap-sort.o graph.o
-	gcc -o ./main.exe ./src/main.c ./graph.o
+	gcc -o ./main.exe ./src/main.c ./graph.o ./heap-sort.o
 graph.o: utilities.o
 	gcc -c -g -o ./graph.o ./src/graph-algos/graph.c
 utilities.o:

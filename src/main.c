@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "graph-algos/graph.h"
+//#include "graph-algos/graph.h"
+#include "sorting-algos/heap-sort.h"
 
 const char *inputFile = "./data/graph_info.txt";
 const int numVertices = 20;
@@ -31,6 +32,13 @@ int main() {
             currNode = currNode->next;
         }
         printf("\n");
+    }
+
+    puts("MIN HEAP SORTED EDGES");
+    heap *H = initializeHeapFromEdges(&G);
+    minHeapSort(H);
+    for (int i = 0; i < H->length; ++i) {
+        printf("From: %d, To: %d, Weight: %d\n", H->values[i].from->id, H->values[i].to->id, H->values[i].weight);
     }
 
     return 0;

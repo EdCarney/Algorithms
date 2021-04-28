@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "../graph-algos/graph.h"
 
-typedef struct _heap {
+typedef struct heap {
     int heapSize;
     int length;
     edge* values;
@@ -19,7 +19,7 @@ heap* initializeHeap();
 // Heap values are copied from the input array and heap
 // length is set to the same as the number of elements.
 // Returns a pointer to the allocated memory.
-heap* initializeHeapFromArray(double inputArray[], int numElements);
+heap* initializeHeapFromEdges(graph *inputGraph);
 
 // Returns the index value yielding the parent of the heap
 // node at the provided index.
