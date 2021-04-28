@@ -1,9 +1,9 @@
 #include "graph.h"
 
-int createGraphFromFile(const char *fileName, int numVertices, struct graph *graph) {
+int createGraphFromFile(const char *fileName, int numVertices, graph *inputGraph) {
 
     // create new graph
-    struct graph *ret = malloc(sizeof(struct graph));
+    graph *ret = malloc(sizeof(graph));
 
     // populate vertices
     createGraphVertices(numVertices, ret);
@@ -14,30 +14,30 @@ int createGraphFromFile(const char *fileName, int numVertices, struct graph *gra
     // populate adjacency list
     createGraphAdjListFromFile(fileName, ret);
 
-    *graph = *ret;
+    *inputGraph = *ret;
 
     return 0;
 }
 
-int createGraphVertices(int numVertices, struct graph *graph) {
-    graph->numVertices = numVertices;
-    graph->vertices = (struct vertex*)calloc(numVertices, sizeof(struct vertex));
+int createGraphVertices(int numVertices, graph *inputGraph) {
+    inputGraph->numVertices = numVertices;
+    inputGraph->vertices = (vertex*)calloc(numVertices, sizeof(vertex));
 
     for (int i = 0; i < numVertices; ++i) {
-        graph->vertices[i].id = i + 1;
-        graph->vertices[i].key = INT_MAX; // closest thing to inf in C
+        inputGraph->vertices[i].id = i + 1;
+        inputGraph->vertices[i].key = INT_MAX; // closest thing to inf in C
     }
 }
 
-int createGraphEdgesFromFile(const char* fileName, struct graph *graph) {
+int createGraphEdgesFromFile(const char* fileName, graph *inputGraph) {
     int weight = 0, numEdges = 0;
     FILE *fp;
 
     if (!(fp = fopen(fileName, "r")))
         return -1;
 
-    for (int i = 0; i < graph->numVertices; ++i) {
-        for (int j = 0; j < graph->numVertices; ++j) {
+    for (int i = 0; i < inputGraph->numVertices; ++i) {
+        for (int j = 0; j < inputGraph->numVertices; ++j) {
             fscanf(fp, "%d", &weight);
             if (j != i && weight < 999) {
                 ++numEdges;
@@ -45,19 +45,19 @@ int createGraphEdgesFromFile(const char* fileName, struct graph *graph) {
         }
     }
 
-    graph->numEdges = numEdges;
-    graph->edges = (struct edge*)calloc(numEdges, sizeof(struct edge));
+    inputGraph->numEdges = numEdges;
+    inputGraph->edges = (edge*)calloc(numEdges, sizeof(edge));
 
     rewind(fp);
 
     numEdges = 0;
-    for (int i = 0; i < graph->numVertices; ++i) {
-        for (int j = 0; j < graph->numVertices; ++j) {
+    for (int i = 0; i < inputGraph->numVertices; ++i) {
+        for (int j = 0; j < inputGraph->numVertices; ++j) {
             fscanf(fp, "%d", &weight);
             if (j != i && weight < 999) {
-                graph->edges[numEdges].from = &(graph->vertices[i]);
-                graph->edges[numEdges].to = &(graph->vertices[j]);
-                graph->edges[numEdges].weight = weight;
+                inputGraph->edges[numEdges].from = &inputGraph->vertices[i];
+                inputGraph->edges[numEdges].to = &inputGraph->vertices[j];
+                inputGraph->edges[numEdges].weight = weight;
                 ++numEdges;
             }
         }
@@ -68,24 +68,24 @@ int createGraphEdgesFromFile(const char* fileName, struct graph *graph) {
     return 0;
 } 
 
-int createGraphAdjListFromFile(const char* fileName, struct graph *graph) {
+int createGraphAdjListFromFile(const char* fileName, graph *inputGraph) {
     FILE* fp;
-    struct adjNode **ret, *currNode;
+    adjNode **ret, *currNode;
     int weight = 0;
 
     if (!(fp = fopen(fileName, "r")))
         return -1;
 
     // initalize adjacency list with default node values
-    for (int i = 0; i < graph->numVertices; ++i)
-        if (!(ret = (struct adjNode**)calloc(graph->numVertices, sizeof(struct adjNode*))))
+    for (int i = 0; i < inputGraph->numVertices; ++i)
+        if (!(ret = (adjNode**)calloc(inputGraph->numVertices, sizeof(adjNode*))))
             return -1;
 
-    for (int i = 0; i < graph->numVertices; ++i) {
+    for (int i = 0; i < inputGraph->numVertices; ++i) {
         ret[i] = initializeAdjNode();
         currNode = ret[i];
 
-        for (int j = 1; j <= graph->numVertices; ++j) {
+        for (int j = 1; j <= inputGraph->numVertices; ++j) {
             fscanf(fp, "%d", &weight);
             if (weight != 999) {
                 currNode->vertexNumber = j;
@@ -103,11 +103,11 @@ int createGraphAdjListFromFile(const char* fileName, struct graph *graph) {
     }
 
     fclose(fp);
-    graph->adjacent = ret;
+    inputGraph->adjacent = ret;
 }
 
-struct adjNode* initializeAdjNode() {
-    struct adjNode* node = malloc(sizeof(struct adjNode));
+adjNode* initializeAdjNode() {
+    adjNode* node = malloc(sizeof(adjNode));
     node->vertexNumber = -1;
     node->weight = -1;
     node->next = NULL;
