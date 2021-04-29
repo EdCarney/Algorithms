@@ -1,3 +1,6 @@
+#ifndef GRAPH_H
+#define GRAPH_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -54,3 +57,5 @@ int createGraphEdgesFromFile(const char* fileName, graph *graph);
 int createGraphAdjListFromFile(const char* fileName, graph *graph);
 
 struct adjNode* initializeAdjNode();
+
+#endif /* GRAPH_H */

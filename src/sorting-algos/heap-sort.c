@@ -40,6 +40,17 @@ void minHeapSort(heap *inputHeap) {
     }
 }
 
+void maxHeapSort(heap *inputHeap) {
+    buildMaxHeap(inputHeap);
+    for (int i = inputHeap->length - 1; i > 0; --i) {
+        edge temp = inputHeap->values[0];
+        inputHeap->values[0] = inputHeap->values[i];
+        inputHeap->values[i] = temp;
+        --(inputHeap->heapSize);
+        maxHeapify(inputHeap, 0);
+    }
+}
+
 void minHeapify(heap* inputHeap, int index) {
     int left = calcLeftNode(index);
     int right = calcRightNode(index);
@@ -59,8 +70,33 @@ void minHeapify(heap* inputHeap, int index) {
     }
 }
 
+void maxHeapify(heap* inputHeap, int index) {
+    int left = calcLeftNode(index);
+    int right = calcRightNode(index);
+    int largest = index;
+
+    if (left < inputHeap->heapSize && inputHeap->values[left].weight > inputHeap->values[largest].weight)
+        largest = left;
+    
+    if (right < inputHeap->heapSize && inputHeap->values[right].weight > inputHeap->values[largest].weight)
+        largest = right;
+
+    if (largest != index) {
+        edge temp = inputHeap->values[index];
+        inputHeap->values[index] = inputHeap->values[largest];
+        inputHeap->values[largest] = temp;
+        maxHeapify(inputHeap, largest);
+    }
+}
+
 heap* buildMinHeap(heap* inputHeap) {
     inputHeap->heapSize = inputHeap->length;
     for (int i = (int)floor((inputHeap->length) / 2); i >= 0; --i)
         minHeapify(inputHeap, i);
+}
+
+heap* buildMaxHeap(heap* inputHeap) {
+    inputHeap->heapSize = inputHeap->length;
+    for (int i = (int)floor((inputHeap->length) / 2); i >= 0; --i)
+        maxHeapify(inputHeap, i);
 }

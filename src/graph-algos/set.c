@@ -1,19 +1,14 @@
 #include "set.h"
 
-struct set {
-    struct vertex **values;
-    int numValues;
-};
-
-struct set *makeSet(struct vertex *value) {
-    struct set *set = (struct set*)malloc(sizeof(struct set));
-    set->values = (struct vertex**)calloc(1, sizeof(struct vertex*));
-    set->values[0] = value;
-    set->numValues = 1;
-    return set;
+set *makeSet(vertex *value) {
+    set *s = (set*)malloc(sizeof(set));
+    s->values = (struct vertex**)calloc(1, sizeof(struct vertex*));
+    s->values[0] = value;
+    s->numValues = 1;
+    return s;
 }
 
-struct set *findSet(struct vertex *value, struct set *allSets, int numSets) {
+set *findSet(struct vertex *value, set *allSets, int numSets) {
     for (int i = 0; i < numSets; ++i) {
         for (int j = 0; j < allSets[i].numValues; ++j) {
             if (value == allSets[i].values[j]) {
@@ -23,18 +18,18 @@ struct set *findSet(struct vertex *value, struct set *allSets, int numSets) {
     }
 }
 
-struct set *unionSets(struct set *setOne, struct set *setTwo) {
-    struct set *set = (struct set*)malloc(sizeof(struct set));
-    set->numValues = setOne->numValues + setTwo->numValues;
-    set->values = (struct vertex**)calloc(set->numValues, sizeof(struct vertex*));
+set *unionSets(set *setOne, set *setTwo) {
+    set *s = (set*)malloc(sizeof(set));
+    s->numValues = setOne->numValues + setTwo->numValues;
+    s->values = (struct vertex**)calloc(s->numValues, sizeof(struct vertex*));
 
     for (int i = 0; i < setOne->numValues; ++i) {
-        set->values[i] = setOne->values[i];
+        s->values[i] = setOne->values[i];
     }
 
-    for (int i = setOne->numValues; i < set->numValues; ++i) {
-        set->values[i] = setTwo->values[i - setOne->numValues];
+    for (int i = setOne->numValues; i < s->numValues; ++i) {
+        s->values[i] = setTwo->values[i - setOne->numValues];
     }
 
-    return set;
+    return s;
 }

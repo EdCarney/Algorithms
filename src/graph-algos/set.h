@@ -1,8 +1,13 @@
 #include <stdlib.h>
 #include "graph.h"
 
-struct set *makeSet(struct vertex *value);
+typedef struct _set {
+    struct vertex **values;
+    int numValues;
+} set;
 
-struct set *findSet(struct vertex *value, struct set *allSets, int numSets);
+set *makeSet(vertex *value);
 
-struct set *unionSets(struct set *setOne, struct set *setTwo);
+set *findSet(vertex *value, set *allSets, int numSets);
+
+set *unionSets(set *setOne, set *setTwo);
