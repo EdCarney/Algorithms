@@ -42,10 +42,15 @@ int main() {
         printf("From: %d, To: %d, Weight: %d\n", H->values[i].from->id, H->values[i].to->id, H->values[i].weight);
     }
 
-    
-    // for (int i = 0; i < G.numEdges; ++i) {
+    set *allSets = calloc(G.numVertices, sizeof(vertex));
+    for (int i = 0; i < G.numVertices; ++i) {
+        makeSet(&G.vertices[i], &allSets[i]);
+    }
 
-    // }
+    puts("ALL SETS");
+    for (int i = 0; i < G.numVertices; ++i) {
+        printf("Set: %d, Num Values: %d, Vertex ID: %d\n", i, allSets[i].numValues, allSets[i].values[0]->id);
+    }
 
     return 0;
 }

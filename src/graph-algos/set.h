@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include "graph.h"
 
-typedef struct _set {
+typedef struct set {
     struct vertex **values;
     int numValues;
 } set;
 
-set *makeSet(vertex *value);
+void makeSet(vertex *value, set *inputSet);
 
 set *findSet(vertex *value, set *allSets, int numSets);
 

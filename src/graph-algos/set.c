@@ -1,11 +1,11 @@
 #include "set.h"
 
-set *makeSet(vertex *value) {
+void makeSet(vertex *value, set *inputSet) {
     set *s = (set*)malloc(sizeof(set));
     s->values = (struct vertex**)calloc(1, sizeof(struct vertex*));
     s->values[0] = value;
     s->numValues = 1;
-    return s;
+    *inputSet = *s;
 }
 
 set *findSet(struct vertex *value, set *allSets, int numSets) {
