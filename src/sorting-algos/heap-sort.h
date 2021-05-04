@@ -1,3 +1,6 @@
+#ifndef HEAP_H
+#define HEAP_H
+
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -58,3 +61,5 @@ heap* buildMaxHeap(heap* heap);
 // Contructs a min heap via an in-place reordering of the heap
 // nodes. Returns a pointer to the max heap.
 heap* buildMinHeap(heap* heap);
+
+#endif /* HEAP_H */

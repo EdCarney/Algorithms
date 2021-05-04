@@ -5,6 +5,7 @@ void makeSet(vertex *value, set *inputSet) {
     s->values = (struct vertex**)calloc(1, sizeof(struct vertex*));
     s->values[0] = value;
     s->numValues = 1;
+    s->id = value->id;
     *inputSet = *s;
 }
 
@@ -20,8 +21,10 @@ set *findSet(struct vertex *value, set *allSets, int numSets) {
 
 set *unionSets(set *setOne, set *setTwo) {
     set *s = (set*)malloc(sizeof(set));
+
     s->numValues = setOne->numValues + setTwo->numValues;
     s->values = (struct vertex**)calloc(s->numValues, sizeof(struct vertex*));
+    s->id = setTwo->id;
 
     for (int i = 0; i < setOne->numValues; ++i) {
         s->values[i] = setOne->values[i];
