@@ -5,11 +5,14 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-typedef struct vertex
+typedef struct vertex vertex;
+
+struct vertex
 {
     int id;
     int key;
-} vertex;
+    vertex *parent;
+};
 
 typedef struct edge
 {
