@@ -10,6 +10,8 @@ typedef struct set {
     int id;
 } set;
 
+set *initializeSet();
+
 void makeSet(vertex *value, set *inputSet);
 
 set *findSet(vertex *value, set *allSets, int numSets);

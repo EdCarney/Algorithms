@@ -1,7 +1,14 @@
 #include "set.h"
 
-void makeSet(vertex *value, set *inputSet) {
+set *initializeSet() {
     set *s = (set*)malloc(sizeof(set));
+    s->values = NULL;
+    s->numValues = 0;
+    s->id = -999;
+}
+
+void makeSet(vertex *value, set *inputSet) {
+    set *s = initializeSet();
     s->values = (struct vertex**)calloc(1, sizeof(struct vertex*));
     s->values[0] = value;
     s->numValues = 1;

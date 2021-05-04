@@ -10,7 +10,35 @@ const int numVertices = 20;
 void runAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVertex);
 
 int main() {
-    /*
+
+    runAndPrintRootedMst(inputFile, numVertices, 1);
+    
+    return 0;
+}
+
+void runAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVertex) {
+    graph G;
+    int numMstVertices, totalWeight = 0;
+    vertex mstVertex;
+
+    createGraphFromFile(inputFile, numVertices, &G);
+    vertex *mst = mstKruskalWithRoot(&G, &numMstVertices, sourceVertex);
+
+    printf("\nKruskal MST Rooted at Node %d\n", sourceVertex);
+    puts("-----------------------------------------");
+    for (int i = 0; i < numMstVertices; ++i) {
+        mstVertex = mst[i];
+        printf("VERTEX: %d,\tPARENT: %d,\tWEIGHT: %d\n", mstVertex.id, mstVertex.parent->id, mstVertex.key);
+        totalWeight += mstVertex.key;
+    }
+    printf("VERTEX: %d,\tPARENT: %s,\tWEIGHT: %d\n", sourceVertex, "NULL", 0);
+    printf("TOTAL COST: %d\n", totalWeight);
+    puts("-----------------------------------------\n");
+}
+
+
+
+/*
     printf("NUM VERTICES: %d\n", G.numVertices);
     printf("NUM EDGES: %d\n", G.numEdges);
 
@@ -70,28 +98,3 @@ int main() {
     // for (int i = 0; i < G.numEdges; ++i) {
     //     printf("From: %d, To: %d, Weight: %d\n", G.edges[i].from->id, G.edges[i].to->id, G.edges[i].weight);
     // }
-
-    runAndPrintRootedMst(inputFile, numVertices, 1);
-
-    return 0;
-}
-
-void runAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVertex) {
-    graph G;
-    int numMstVertices, totalWeight = 0, sourceVertexId = 1;
-    vertex mstVertex;
-
-    createGraphFromFile(inputFile, numVertices, &G);
-    vertex *mst = mstKruskalWithRoot(&G, &numMstVertices, sourceVertexId);
-
-    puts("\nKruskal MST Rooted at Node 1");
-    puts("-----------------------------------------");
-    for (int i = 0; i < numMstVertices; ++i) {
-        mstVertex = mst[i];
-        printf("VERTEX ID: %d,\tPARENT ID: %d,\tWEIGHT: %d\n", mstVertex.id, mstVertex.parent->id, mstVertex.key);
-        totalWeight += mstVertex.key;
-    }
-    printf("VERTEX ID: %d,\tPARENT ID: %s, WEIGHT: %d\n", sourceVertexId, "NULL", 0);
-    printf("TOTAL COST: %d\n", totalWeight);
-    puts("-----------------------------------------\n");
-}

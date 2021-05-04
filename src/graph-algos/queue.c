@@ -11,6 +11,13 @@ queue *initializeQueue() {
     return Q;
 }
 
+queue *initializeQueueFromGraph(graph *G) {
+    queue *Q = initializeQueue();
+    for (int i = 0; i < G->numVertices; ++i)
+        enqueue(Q, G->vertices[i]);
+    return Q;
+}
+
 vertex peek(queue *Q) {
    return Q->vertexArray[Q->front];
 }
@@ -25,15 +32,15 @@ bool isFull(queue *Q) {
 
 int size(queue *Q) {
    return Q->itemCount;
-}  
+}
 
 void enqueue(queue *Q, vertex data) {
 
    if(!isFull(Q)) {
-	
-      if(Q->rear == MAX-1) {
-         Q->rear = -1;            
-      }       
+
+      if(Q->rear == MAX - 1) {
+         Q->rear = -1;
+      }
 
       Q->vertexArray[++(Q->rear)] = data;
       Q->itemCount++;
@@ -42,11 +49,11 @@ void enqueue(queue *Q, vertex data) {
 
 vertex dequeue(queue *Q) {
    vertex data = Q->vertexArray[(Q->front)++];
-	
+
    if(Q->front == MAX) {
       Q->front = 0;
    }
-	
+
    (Q->itemCount)--;
-   return data;  
+   return data;
 }

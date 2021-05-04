@@ -16,6 +16,8 @@ typedef struct queue {
 
 queue *initializeQueue();
 
+queue *initializeQueueFromGraph(graph *G);
+
 vertex peek(queue *Q);
 
 bool isEmpty(queue *Q);
