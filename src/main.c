@@ -2,21 +2,51 @@
 #include "graph-algos/graph.h"
 #include "graph-algos/set.h"
 #include "graph-algos/mst-kruskal.h"
+#include "graph-algos/shortest-path-dijkstra.h"
 #include "sorting-algos/heap-sort.h"
 
 const char *inputFile = "./data/graph_info.txt";
 const int numVertices = 20;
 
-void runAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVertex);
+void printAdjacencyLists(const char *inputFile, int numVertices);
+void findAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVertex);
+void findAndPrintShortestPath(const char *inputFile, int numVertices, int sourceVertex);
 
 int main() {
 
-    runAndPrintRootedMst(inputFile, numVertices, 1);
-    
+    printAdjacencyLists(inputFile, numVertices);
+    findAndPrintRootedMst(inputFile, numVertices, 1);
+
     return 0;
 }
 
-void runAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVertex) {
+void printHeaderBar() {
+    puts("-----------------------------------------");
+}
+
+void printAdjacencyLists(const char *inputFile, int numVertices) {
+    graph G;
+    int numMstVertices, totalWeight = 0;
+    vertex mstVertex;
+
+    createGraphFromFile(inputFile, numVertices, &G);
+
+    puts("\nAdjacency List Values (NODE ID, WEIGHT)");
+    printHeaderBar();
+    adjNode* currNode;
+    for (int i = 0; i < G.numVertices; ++i) {
+        currNode = G.adjacent[i];
+        printf("NODE %d: ", i + 1);
+        while (currNode != NULL) {
+            printf("(%d, %d) ", currNode->vertexNumber, currNode->weight);
+            currNode = currNode->next;
+        }
+        printf("\n");
+    }
+    printHeaderBar();
+}
+
+void findAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVertex) {
     graph G;
     int numMstVertices, totalWeight = 0;
     vertex mstVertex;
@@ -25,7 +55,7 @@ void runAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVert
     vertex *mst = mstKruskalWithRoot(&G, &numMstVertices, sourceVertex);
 
     printf("\nKruskal MST Rooted at Node %d\n", sourceVertex);
-    puts("-----------------------------------------");
+    printHeaderBar();
     for (int i = 0; i < numMstVertices; ++i) {
         mstVertex = mst[i];
         printf("VERTEX: %d,\tPARENT: %d,\tWEIGHT: %d\n", mstVertex.id, mstVertex.parent->id, mstVertex.key);
@@ -33,11 +63,16 @@ void runAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVert
     }
     printf("VERTEX: %d,\tPARENT: %s,\tWEIGHT: %d\n", sourceVertex, "NULL", 0);
     printf("TOTAL COST: %d\n", totalWeight);
-    puts("-----------------------------------------\n");
+    printHeaderBar();
+    printf("\n");
 }
 
+void findAndPrintShortestPath(const char *inputFile, int numVertices, int sourceVertex) {
+    graph G;
 
+    createGraphFromFile(inputFile, numVertices, &G);
 
+}
 /*
     printf("NUM VERTICES: %d\n", G.numVertices);
     printf("NUM EDGES: %d\n", G.numEdges);

@@ -1,19 +1,36 @@
 #include "heap-sort.h"
 
-heap* initializeHeap() {
-    heap* heap = malloc(sizeof(heap));
+edgeHeap* initializeEdgeHeap() {
+    edgeHeap* heap = malloc(sizeof(edgeHeap));
     heap->heapSize = 0;
     heap->length = 0;
     heap->values = NULL;
     return heap;
 }
 
-heap* initializeHeapFromEdges(graph *inputGraph) {
-    heap* heap = initializeHeap();
+vertexHeap* initializeVertexHeap() {
+    vertexHeap* heap = malloc(sizeof(vertexHeap));
+    heap->heapSize = 0;
+    heap->length = 0;
+    heap->values = NULL;
+    return heap;
+}
+
+edgeHeap* initializeHeapFromEdges(graph *inputGraph) {
+    edgeHeap* heap = initializeEdgeHeap();
     heap->values = (edge*)calloc(inputGraph->numEdges, sizeof(edge));
     heap->length = inputGraph->numEdges;
     for (int i = 0; i < inputGraph->numEdges; ++i)
         heap->values[i] = inputGraph->edges[i];
+    return heap;
+}
+
+vertexHeap* initializeHeapFromVertices(graph *inputGraph) {
+    vertexHeap* heap = initializeVertexHeap();
+    heap->values = (vertex*)calloc(inputGraph->numVertices, sizeof(vertex));
+    heap->length = inputGraph->numVertices;
+    for (int i = 0; i < inputGraph->numVertices; ++i)
+        heap->values[i] = inputGraph->vertices[i];
     return heap;
 }
 
@@ -29,29 +46,55 @@ int calcRightNode(int i) {
     return 2 * (i + 1);
 }
 
-void minHeapSort(heap *inputHeap) {
-    buildMinHeap(inputHeap);
+void minEdgeHeapSort(edgeHeap *inputHeap) {
+    buildMinEdgeHeap(inputHeap);
+    edge temp;
     for (int i = inputHeap->length - 1; i > 0; --i) {
-        edge temp = inputHeap->values[0];
+        temp = inputHeap->values[0];
         inputHeap->values[0] = inputHeap->values[i];
         inputHeap->values[i] = temp;
         --(inputHeap->heapSize);
-        minHeapify(inputHeap, 0);
+        minEdgeHeapify(inputHeap, 0);
     }
 }
 
-void maxHeapSort(heap *inputHeap) {
-    buildMaxHeap(inputHeap);
+void minVertexHeapSort(vertexHeap *inputHeap) {
+    buildMinVertexHeap(inputHeap);
+    vertex temp;
     for (int i = inputHeap->length - 1; i > 0; --i) {
-        edge temp = inputHeap->values[0];
+        temp = inputHeap->values[0];
         inputHeap->values[0] = inputHeap->values[i];
         inputHeap->values[i] = temp;
         --(inputHeap->heapSize);
-        maxHeapify(inputHeap, 0);
+        minVertexHeapify(inputHeap, 0);
     }
 }
 
-void minHeapify(heap* inputHeap, int index) {
+void maxEdgeHeapSort(edgeHeap *inputHeap) {
+    buildMaxEdgeHeap(inputHeap);
+    edge temp;
+    for (int i = inputHeap->length - 1; i > 0; --i) {
+        temp = inputHeap->values[0];
+        inputHeap->values[0] = inputHeap->values[i];
+        inputHeap->values[i] = temp;
+        --(inputHeap->heapSize);
+        maxEdgeHeapify(inputHeap, 0);
+    }
+}
+
+void maxVertexHeapSort(vertexHeap *inputHeap) {
+    buildMaxVertexHeap(inputHeap);
+    vertex temp;
+    for (int i = inputHeap->length - 1; i > 0; --i) {
+        temp = inputHeap->values[0];
+        inputHeap->values[0] = inputHeap->values[i];
+        inputHeap->values[i] = temp;
+        --(inputHeap->heapSize);
+        maxVertexHeapify(inputHeap, 0);
+    }
+}
+
+void minEdgeHeapify(edgeHeap* inputHeap, int index) {
     int left = calcLeftNode(index);
     int right = calcRightNode(index);
     int smallest = index;
@@ -66,11 +109,30 @@ void minHeapify(heap* inputHeap, int index) {
         edge temp = inputHeap->values[index];
         inputHeap->values[index] = inputHeap->values[smallest];
         inputHeap->values[smallest] = temp;
-        minHeapify(inputHeap, smallest);
+        minEdgeHeapify(inputHeap, smallest);
     }
 }
 
-void maxHeapify(heap* inputHeap, int index) {
+void minVertexHeapify(vertexHeap* inputHeap, int index) {
+    int left = calcLeftNode(index);
+    int right = calcRightNode(index);
+    int smallest = index;
+
+    if (left < inputHeap->heapSize && inputHeap->values[left].key < inputHeap->values[smallest].key)
+        smallest = left;
+    
+    if (right < inputHeap->heapSize && inputHeap->values[right].key < inputHeap->values[smallest].key)
+        smallest = right;
+
+    if (smallest != index) {
+        vertex temp = inputHeap->values[index];
+        inputHeap->values[index] = inputHeap->values[smallest];
+        inputHeap->values[smallest] = temp;
+        minVertexHeapify(inputHeap, smallest);
+    }
+}
+
+void maxEdgeHeapify(edgeHeap* inputHeap, int index) {
     int left = calcLeftNode(index);
     int right = calcRightNode(index);
     int largest = index;
@@ -85,18 +147,49 @@ void maxHeapify(heap* inputHeap, int index) {
         edge temp = inputHeap->values[index];
         inputHeap->values[index] = inputHeap->values[largest];
         inputHeap->values[largest] = temp;
-        maxHeapify(inputHeap, largest);
+        maxEdgeHeapify(inputHeap, largest);
     }
 }
 
-heap* buildMinHeap(heap* inputHeap) {
-    inputHeap->heapSize = inputHeap->length;
-    for (int i = (int)floor((inputHeap->length) / 2); i >= 0; --i)
-        minHeapify(inputHeap, i);
+void maxVertexHeapify(vertexHeap* inputHeap, int index) {
+    int left = calcLeftNode(index);
+    int right = calcRightNode(index);
+    int largest = index;
+
+    if (left < inputHeap->heapSize && inputHeap->values[left].key > inputHeap->values[largest].key)
+        largest = left;
+    
+    if (right < inputHeap->heapSize && inputHeap->values[right].key > inputHeap->values[largest].key)
+        largest = right;
+
+    if (largest != index) {
+        vertex temp = inputHeap->values[index];
+        inputHeap->values[index] = inputHeap->values[largest];
+        inputHeap->values[largest] = temp;
+        maxVertexHeapify(inputHeap, largest);
+    }
 }
 
-heap* buildMaxHeap(heap* inputHeap) {
+edgeHeap* buildMinEdgeHeap(edgeHeap* inputHeap) {
     inputHeap->heapSize = inputHeap->length;
     for (int i = (int)floor((inputHeap->length) / 2); i >= 0; --i)
-        maxHeapify(inputHeap, i);
+        minEdgeHeapify(inputHeap, i);
+}
+
+vertexHeap* buildMinVertexHeap(vertexHeap* inputHeap) {
+    inputHeap->heapSize = inputHeap->length;
+    for (int i = (int)floor((inputHeap->length) / 2); i >= 0; --i)
+        minVertexHeapify(inputHeap, i);
+}
+
+edgeHeap* buildMaxEdgeHeap(edgeHeap* inputHeap) {
+    inputHeap->heapSize = inputHeap->length;
+    for (int i = (int)floor((inputHeap->length) / 2); i >= 0; --i)
+        maxEdgeHeapify(inputHeap, i);
+}
+
+vertexHeap* buildMaxVertexHeap(vertexHeap* inputHeap) {
+    inputHeap->heapSize = inputHeap->length;
+    for (int i = (int)floor((inputHeap->length) / 2); i >= 0; --i)
+        maxVertexHeapify(inputHeap, i);
 }

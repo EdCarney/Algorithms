@@ -9,8 +9,8 @@ edge *mstKruskal(graph *G, int *numTreeEdges) {
     for (int i = 0; i < G->numVertices; ++i)
         makeSet(&G->vertices[i], &allSets[i]);
 
-    heap *H = initializeHeapFromEdges(G);
-    maxHeapSort(H);
+    edgeHeap *H = initializeHeapFromEdges(G);
+    maxEdgeHeapSort(H);
 
     for (int i = 0; i < H->length; ++i) {
         foundSet1 = findSet(H->values[i].from, allSets, numSets);
