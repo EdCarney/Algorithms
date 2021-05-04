@@ -5,6 +5,6 @@
 
 edge *mstKruskal(graph *G, int *numMstEdges);
 
-edge *addEdgeToArray(edge *A, int *numMstEdges, edge *edgeToAdd);
+edge *addEdgeToArray(edge *A, int *numMstEdges, edge edgeToAdd);
 
 set *mergeSets(set *set1, set *set2, set *allSets, int *numSets);

@@ -18,7 +18,7 @@ edge *mstKruskal(graph *G, int *numTreeEdges) {
 
         if (foundSet1 != foundSet2) {
             // add the edge to A
-            A = addEdgeToArray(A, &numMstEdges, &H->values[i]);
+            A = addEdgeToArray(A, &numMstEdges, H->values[i]);
             
             // merge the trees
             allSets = mergeSets(foundSet1, foundSet2, allSets, &numSets);
@@ -29,13 +29,14 @@ edge *mstKruskal(graph *G, int *numTreeEdges) {
     return A;
 }
 
-edge *addEdgeToArray(edge *A, int *numMstEdges, edge *edgeToAdd) {
+edge *addEdgeToArray(edge *A, int *numMstEdges, edge edgeToAdd) {
     (*numMstEdges)++;
     edge *tempA = calloc(*numMstEdges, sizeof(edge));
-    for (int i = 0; i < *numMstEdges - 1; ++i) {
+
+    for (int i = 0; i < *numMstEdges - 1; ++i)
         tempA[i] = A[i];
-    }
-    tempA[*numMstEdges - 1] = *edgeToAdd;
+
+    tempA[*numMstEdges - 1] = edgeToAdd;
     free(A);
     return tempA;
 }
