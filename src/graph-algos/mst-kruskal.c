@@ -1,8 +1,8 @@
 #include "mst-kruskal.h"
 
 edge *mstKruskal(graph *G, int *numTreeEdges) {
-    set *allSets, *foundSet1, *foundSet2, *tempSet, *tempSets;
-    int numSets = G->numVertices, setCount = 0, numMstEdges = 0;
+    set *allSets, *foundSet1, *foundSet2;
+    int numSets = G->numVertices, numMstEdges = 0;
     edge *A = (edge*)calloc(1, sizeof(edge));
 
     allSets = (set*)calloc(G->numVertices, sizeof(set));
@@ -18,21 +18,10 @@ edge *mstKruskal(graph *G, int *numTreeEdges) {
 
         if (foundSet1 != foundSet2) {
             // add the edge to A
-            A = addEdgeToArray(A, &numMstEdges, &(H->values[i]));
+            A = addEdgeToArray(A, &numMstEdges, &H->values[i]);
             
             // merge the trees
-            tempSet = unionSets(foundSet1, foundSet2);
-            tempSets = calloc(numSets - 1, sizeof(set));
-            setCount = 0;
-            for (int i = 0; i < numSets; ++i) {
-                if (allSets[i].id != foundSet1->id &&
-                    allSets[i].id != foundSet2->id) {
-                        tempSets[setCount++] = allSets[i];
-                }
-            }
-            tempSets[setCount++] = *tempSet;
-            allSets = tempSets;
-            numSets = setCount;
+            allSets = mergeSets(foundSet1, foundSet2, allSets, &numSets);
         }
     }
 
@@ -51,6 +40,16 @@ edge *addEdgeToArray(edge *A, int *numMstEdges, edge *edgeToAdd) {
     return tempA;
 }
 
-set *mergeSets(set *set1, set *set2, set *allSets, int *numSet) {
-    
+set *mergeSets(set *set1, set *set2, set *allSets, int *numSets) {
+    set *tempSet = unionSets(set1, set2);
+    set *tempSets = calloc(*numSets - 1, sizeof(set));
+    int setCount = 0;
+
+    for (int i = 0; i < *numSets; ++i)
+        if (allSets[i].id != set1->id && allSets[i].id != set2->id)
+            tempSets[setCount++] = allSets[i];
+
+    tempSets[setCount++] = *tempSet;
+    *numSets = setCount;
+    return tempSets;
 }
