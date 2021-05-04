@@ -9,8 +9,9 @@ const int numVertices = 6;
 
 int main() {
     
-    graph G;
-    createGraphFromFile(inputFile, numVertices, &G);
+    graph G_1, G_2;
+    createGraphFromFile(inputFile, numVertices, &G_1);
+    createGraphFromFile(inputFile, numVertices, &G_2);
 
     /*
     printf("NUM VERTICES: %d\n", G.numVertices);
@@ -74,11 +75,20 @@ int main() {
     // }
 
     int numMstEdges;
-    edge mstEdge, *mst = mstKruskal(&G, &numMstEdges);
+    edge mstEdge;
+    edge *mst_1 = mstKruskal(&G_1, &numMstEdges);
+    edge *mst_2 = mstKruskalWithRoot(&G_2, &numMstEdges, 1);
 
+    puts("MST 1");
     for (int i = 0; i < numMstEdges; ++i) {
-        mstEdge = mst[i];
+        mstEdge = mst_1[i];
         printf("FROM: %d, TO: %d, WEIGHT: %d\n", mstEdge.from->id, mstEdge.to->id, mstEdge.weight);
+    }
+
+    puts("MST 2");
+    for (int i = 0; i < numMstEdges; ++i) {
+        mstEdge = mst_2[i];
+        printf("VERTEX ID: %d, PARENT ID: %d, WEIGHT: %d\n", mstEdge.to->id, mstEdge.to->parent->id, mstEdge.weight);
     }
 
     return 0;

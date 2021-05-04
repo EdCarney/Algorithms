@@ -1,9 +1,12 @@
 #include <stdlib.h>
 #include "set.h"
 #include "graph.h"
+#include "queue.h"
 #include "../sorting-algos/heap-sort.h"
 
 edge *mstKruskal(graph *G, int *numMstEdges);
+
+edge *mstKruskalWithRoot(graph *G, int *numMstEdges, int sourceId);
 
 edge *addEdgeToArray(edge *A, int *numMstEdges, edge edgeToAdd);
 
