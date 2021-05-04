@@ -7,6 +7,8 @@
 const char *inputFile = "./data/graph_info.txt";
 const int numVertices = 20;
 
+void runAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVertex);
+
 int main() {
     /*
     printf("NUM VERTICES: %d\n", G.numVertices);
@@ -69,19 +71,27 @@ int main() {
     //     printf("From: %d, To: %d, Weight: %d\n", G.edges[i].from->id, G.edges[i].to->id, G.edges[i].weight);
     // }
 
+    runAndPrintRootedMst(inputFile, numVertices, 1);
+
+    return 0;
+}
+
+void runAndPrintRootedMst(const char *inputFile, int numVertices, int sourceVertex) {
     graph G;
-    int numMstVertices;
+    int numMstVertices, totalWeight = 0, sourceVertexId = 1;
     vertex mstVertex;
 
     createGraphFromFile(inputFile, numVertices, &G);
-    vertex *mst_2 = mstKruskalWithRoot(&G, &numMstVertices, 1);
+    vertex *mst = mstKruskalWithRoot(&G, &numMstVertices, sourceVertexId);
 
     puts("\nKruskal MST Rooted at Node 1");
+    puts("-----------------------------------------");
     for (int i = 0; i < numMstVertices; ++i) {
-        mstVertex = mst_2[i];
-        printf("VERTEX ID: %d, PARENT ID: %d, WEIGHT: %d\n", mstVertex.id, mstVertex.parent->id, mstVertex.key);
+        mstVertex = mst[i];
+        printf("VERTEX ID: %d,\tPARENT ID: %d,\tWEIGHT: %d\n", mstVertex.id, mstVertex.parent->id, mstVertex.key);
+        totalWeight += mstVertex.key;
     }
-    printf("VERTEX ID: %d, PARENT ID: %s, WEIGHT: %d\n\n", 1, "NULL", 0);
-
-    return 0;
+    printf("VERTEX ID: %d,\tPARENT ID: %s, WEIGHT: %d\n", sourceVertexId, "NULL", 0);
+    printf("TOTAL COST: %d\n", totalWeight);
+    puts("-----------------------------------------\n");
 }
