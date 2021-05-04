@@ -6,7 +6,7 @@
 
 edge *mstKruskal(graph *G, int *numMstEdges);
 
-edge *mstKruskalWithRoot(graph *G, int *numMstEdges, int sourceId);
+vertex *mstKruskalWithRoot(graph *G, int *numMstEdges, int sourceId);
 
 edge *addEdgeToArray(edge *A, int *numMstEdges, edge edgeToAdd);
 

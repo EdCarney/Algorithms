@@ -29,41 +29,49 @@ edge *mstKruskal(graph *G, int *numTreeEdges) {
     return A;
 }
 
-edge *mstKruskalWithRoot(graph *G, int *numTreeEdges, int sourceId) {
-    edge *A = mstKruskal(G, numTreeEdges);
+vertex *mstKruskalWithRoot(graph *G, int *numTreeVertices, int sourceId) {
+    edge *A = mstKruskal(G, numTreeVertices);
     int vertexNum, numConnectingEdges;
-    vertex currentVertex, *tempVertex;
+    vertex currentVertex, *tempVertex, sourceVertex;;
     queue *Q = initializeQueue();
 
     // get the source vertex and add to queue
     for (int i = 0; i < G->numVertices; ++i)
         if (G->vertices[i].id == sourceId)
-            enqueue(Q, G->vertices[i]);
+            sourceVertex = G->vertices[i];
+
+    enqueue(Q, sourceVertex);
 
     while (!isEmpty(Q)) {
         currentVertex = dequeue(Q);
-        for (int i = 0; i < *numTreeEdges; ++i) {
-            if (A[i].from->id == currentVertex.id && A[i].to->parent == NULL && A[i].to->id != sourceId) {
+        for (int i = 0; i < *numTreeVertices; ++i) {
+            if (A[i].from->id == currentVertex.id &&
+                A[i].to->parent == NULL &&
+                A[i].to->id != sourceId) {
                 A[i].to->parent = A[i].from;
+                A[i].to->key = A[i].weight;
                 enqueue(Q, *A[i].to);
             }
-            else if (A[i].to->id == currentVertex.id && A[i].from->parent == NULL && A[i].from->id != sourceId) {
+            else if (A[i].to->id == currentVertex.id &&
+                     A[i].from->parent == NULL &&
+                     A[i].from->id != sourceId) {
                 tempVertex = A[i].to;
                 A[i].to = A[i].from;
                 A[i].from = tempVertex;
+
                 A[i].to->parent = A[i].from;
+                A[i].to->key = A[i].weight;
                 enqueue(Q, *A[i].to);
             }
         }
     }
 
-    return A;
-    // create a queue of vertices to process
-    // for each vertex in the queue
-    // go through and find any edges containing the vertex
-    // if the vertex's parent is NULL
-        // set the parent of the other vertex to the vertex you are considering
-        // add the updated vertex to your queue
+    // grab the vertices
+    vertex *mstVertices = (vertex*)calloc(G->numVertices, sizeof(vertex));
+    for (int i = 0; i < *numTreeVertices; ++i)
+        mstVertices[i] = *A[i].to;
+
+    return mstVertices;
 }
 
 edge *addEdgeToArray(edge *A, int *numMstEdges, edge edgeToAdd) {

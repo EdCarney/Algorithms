@@ -4,15 +4,10 @@
 #include "graph-algos/mst-kruskal.h"
 #include "sorting-algos/heap-sort.h"
 
-const char *inputFile = "./data/graph_debug.txt";
-const int numVertices = 6;
+const char *inputFile = "./data/graph_info.txt";
+const int numVertices = 20;
 
 int main() {
-    
-    graph G_1, G_2;
-    createGraphFromFile(inputFile, numVertices, &G_1);
-    createGraphFromFile(inputFile, numVertices, &G_2);
-
     /*
     printf("NUM VERTICES: %d\n", G.numVertices);
     printf("NUM EDGES: %d\n", G.numEdges);
@@ -74,22 +69,19 @@ int main() {
     //     printf("From: %d, To: %d, Weight: %d\n", G.edges[i].from->id, G.edges[i].to->id, G.edges[i].weight);
     // }
 
-    int numMstEdges;
-    edge mstEdge;
-    edge *mst_1 = mstKruskal(&G_1, &numMstEdges);
-    edge *mst_2 = mstKruskalWithRoot(&G_2, &numMstEdges, 1);
+    graph G;
+    int numMstVertices;
+    vertex mstVertex;
 
-    puts("MST 1");
-    for (int i = 0; i < numMstEdges; ++i) {
-        mstEdge = mst_1[i];
-        printf("FROM: %d, TO: %d, WEIGHT: %d\n", mstEdge.from->id, mstEdge.to->id, mstEdge.weight);
-    }
+    createGraphFromFile(inputFile, numVertices, &G);
+    vertex *mst_2 = mstKruskalWithRoot(&G, &numMstVertices, 1);
 
-    puts("MST 2");
-    for (int i = 0; i < numMstEdges; ++i) {
-        mstEdge = mst_2[i];
-        printf("VERTEX ID: %d, PARENT ID: %d, WEIGHT: %d\n", mstEdge.to->id, mstEdge.to->parent->id, mstEdge.weight);
+    puts("\nKruskal MST Rooted at Node 1");
+    for (int i = 0; i < numMstVertices; ++i) {
+        mstVertex = mst_2[i];
+        printf("VERTEX ID: %d, PARENT ID: %d, WEIGHT: %d\n", mstVertex.id, mstVertex.parent->id, mstVertex.key);
     }
+    printf("VERTEX ID: %d, PARENT ID: %s, WEIGHT: %d\n\n", 1, "NULL", 0);
 
     return 0;
 }
