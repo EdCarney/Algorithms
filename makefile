@@ -1,5 +1,5 @@
 main.exe: heap-sort.o set.o graph.o mst-kruskal.o shortest-path-dijkstra.o
-	gcc -o ./main.exe ./src/main.c ./heap-sort.o ./set.o ./graph.o ./mst-kruskal.o ./queue.o ./shortest-path-dijkstra.o
+	gcc -o ./main.exe ./src/main.c ./heap-sort.o ./set.o ./graph.o ./mst-kruskal.o ./queue.o ./shortest-path-dijkstra.o -lm
 mst-kruskal.o: graph.o set.o heap-sort.o queue.o
 	gcc -c -g -o ./mst-kruskal.o ./src/graph-algos/mst-kruskal.c
 queue.o: graph.o

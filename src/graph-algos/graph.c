@@ -20,12 +20,13 @@ int createGraphFromFile(const char *fileName, int numVertices, graph *inputGraph
 }
 
 int createGraphVertices(int numVertices, graph *inputGraph) {
+    int inf = 2147483647;
     inputGraph->numVertices = numVertices;
     inputGraph->vertices = (vertex*)calloc(numVertices, sizeof(vertex));
 
     for (int i = 0; i < numVertices; ++i) {
         inputGraph->vertices[i].id = i + 1;
-        inputGraph->vertices[i].key = INT_MAX; // closest thing to inf in C
+        inputGraph->vertices[i].key = inf;
     }
 }
 

@@ -1,8 +1,9 @@
 #include "shortest-path-dijkstra.h"
 
 void initSingleSource(graph *G, vertex *source) {
+    int inf = 2147483647;
     for (int i = 0; i < G->numVertices; ++i) {
-        G->vertices[i].key = INT_MAX;
+        G->vertices[i].key = inf;
         G->vertices[i].parent = NULL;
     }
     source->key = 0;
