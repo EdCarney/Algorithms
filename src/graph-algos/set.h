@@ -18,4 +18,6 @@ set *findSet(vertex *value, set *allSets, int numSets);
 
 set *unionSets(set *setOne, set *setTwo);
 
+vertex *getSetVertexById(set *S, int id);
+
 #endif /* SET_H */

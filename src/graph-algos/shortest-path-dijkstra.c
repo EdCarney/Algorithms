@@ -17,18 +17,22 @@ set *shortestPathDijkstra(graph *G, vertex *source) {
     while (heap->length > 0) {
         u = extractVertexHeapMin(heap);
         S = unionSets(S, u);
-
         v = G->adjacent[u->values[0]->id - 1];
         while (v != NULL) {
-            relax(getVertexById(G, u->values[0]->id), getVertexById(G, v->vertexNumber), v->weight);
+            if (vertexIdInHeap(heap, v->vertexNumber))
+                relax(S->values[S->numValues - 1], getHeapVertexById(heap, v->vertexNumber), v->weight);
+            else
+                relax(S->values[S->numValues - 1], getSetVertexById(S, v->vertexNumber), v->weight);
             v = v->next;
         }
     }
+    return S;
 }
 
 set *extractVertexHeapMin(vertexHeap *heap) {
-    heap = buildMinVertexHeap(heap);
-    set *u;
+
+    buildMinVertexHeap(heap);
+    set *u = malloc(sizeof(set));
     makeSet(&heap->values[0], u);
 
     // reduce heap value length

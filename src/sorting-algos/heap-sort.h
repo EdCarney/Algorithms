@@ -4,6 +4,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "../graph-algos/graph.h"
 
 typedef struct edgeHeap {
@@ -105,5 +106,9 @@ edgeHeap* buildMinEdgeHeap(edgeHeap* heap);
 // Contructs a min heap via an in-place reordering of the heap
 // nodes. Returns a pointer to the max heap.
 vertexHeap* buildMinVertexHeap(vertexHeap* heap);
+
+vertex *getHeapVertexById(vertexHeap *H, int id);
+
+bool vertexIdInHeap(vertexHeap *H, int id);
 
 #endif /* HEAP_H */

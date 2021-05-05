@@ -193,3 +193,17 @@ vertexHeap* buildMaxVertexHeap(vertexHeap* inputHeap) {
     for (int i = (int)floor((inputHeap->length) / 2); i >= 0; --i)
         maxVertexHeapify(inputHeap, i);
 }
+
+bool vertexIdInHeap(vertexHeap *H, int id) {
+    for (int i = 0; i < H->length; ++i)
+        if (H->values[i].id == id)
+            return true;
+    return false;
+}
+
+vertex *getHeapVertexById(vertexHeap *H, int id) {
+    for (int i = 0; i < H->length; ++i)
+        if (H->values[i].id == id)
+            return &H->values[i];
+    return NULL;
+}

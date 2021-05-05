@@ -61,6 +61,6 @@ int createGraphAdjListFromFile(const char* fileName, graph *graph);
 
 struct adjNode* initializeAdjNode();
 
-vertex *getVertexById(graph *G, int id);
+vertex *getGraphVertexById(graph *G, int id);
 
 #endif /* GRAPH_H */

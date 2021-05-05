@@ -114,7 +114,7 @@ adjNode* initializeAdjNode() {
     return node;
 }
 
-vertex *getVertexById(graph *G, int id) {
+vertex *getGraphVertexById(graph *G, int id) {
     for (int i = 0; i < G->numVertices; ++i)
         if (G->vertices[i].id == id)
             return &G->vertices[i];

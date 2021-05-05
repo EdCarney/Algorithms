@@ -43,3 +43,10 @@ set *unionSets(set *setOne, set *setTwo) {
 
     return s;
 }
+
+vertex *getSetVertexById(set *S, int id) {
+    for (int i = 0; i < S->numValues; ++i)
+        if (S->values[i]->id == id)
+            return S->values[i];
+    return NULL;
+}
