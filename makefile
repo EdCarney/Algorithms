@@ -6,10 +6,8 @@ queue.o: graph.o
 	gcc -c -g -o ./queue.o ./src/graph-algos/queue.c
 shortest-path-dijkstra.o: graph.o set.o heap-sort.o
 	gcc -c -g -o ./shortest-path-dijkstra.o ./src/graph-algos/shortest-path-dijkstra.c
-graph.o: utilities.o
+graph.o:
 	gcc -c -g -o ./graph.o ./src/graph-algos/graph.c
-utilities.o:
-	gcc -c -g -o ./utilities.o ./src/utils/utilities.c
 heap-sort.o:
 	gcc -c -g -o ./heap-sort.o ./src/sorting-algos/heap-sort.c
 set.o:
