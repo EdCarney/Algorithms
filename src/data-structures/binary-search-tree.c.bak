@@ -196,4 +196,3 @@ void printBstNode(struct bstNode* node) {
     puts("------------------");
 }
 
-
