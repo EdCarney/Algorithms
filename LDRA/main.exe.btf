@@ -1,0 +1,193 @@
+$ Begin TBmakelogparser Information
+
+$ main.exe.btf
+$ 7 source files
+$ 
+$ Command Used:
+$ =============
+$
+$ Command  : tbmakelogparser C:\Demo\demo-algorithms\build_log.txt -t C:\Users\Andre\AppData\Local\Temp\tbmakelogparser_btf_list.txt -p C:\Users\Andre\AppData\Local\Temp\tbmakelogparser_ptf_list.txt -f C:\LDRA_Toolsuite_C_CPP_10.0.2\Compiler_spec\MinGW\Mingw_tbmakelogparser.dat -b make main.exe -d C:\Demo\demo-algorithms
+$ Start-In : C:\Demo\demo-algorithms
+$
+$ BTF Macros Used:
+$ ================
+$
+$ $(Compiler) - gcc
+$ $(Source) - source file under test
+$
+$ BTF generated from the following log entries:
+$ =============================================
+$
+$ gcc.exe
+$ C:\Demo\demo-algorithms\
+$ "gcc" "-o" "./bin/main.exe" "./src/main.c" "./bin/treap-sort.o" "./bin/heap-sort.o" "./bin/binary-search-tree.o" "./bin/selection-sort.o" "./bin/insertion-sort.o" "./bin/utilities.o" "-lm" 
+$ gcc.exe
+$ C:\Demo\demo-algorithms\
+$ "gcc" "-c" "-g" "-o" "./bin/treap-sort.o" "./src/sorting-algos/treap-sort.c" 
+$ gcc.exe
+$ C:\Demo\demo-algorithms\
+$ "gcc" "-c" "-g" "-o" "./bin/heap-sort.o" "./src/sorting-algos/heap-sort.c" 
+$ gcc.exe
+$ C:\Demo\demo-algorithms\
+$ "gcc" "-c" "-g" "-o" "./bin/binary-search-tree.o" "./src/data-structures/binary-search-tree.c" 
+$ gcc.exe
+$ C:\Demo\demo-algorithms\
+$ "gcc" "-c" "-g" "-o" "./bin/selection-sort.o" "./src/sorting-algos/selection-sort.c" 
+$ gcc.exe
+$ C:\Demo\demo-algorithms\
+$ "gcc" "-c" "-g" "-o" "./bin/insertion-sort.o" "./src/sorting-algos/insertion-sort.c" 
+$ gcc.exe
+$ C:\Demo\demo-algorithms\
+$ "gcc" "-c" "-g" "-o" "./bin/utilities.o" "./src/utils/utilities.c" 
+$
+$ End TBmakelogparser Information
+
+ # Begin Testbed Set
+
+   SET_TYPE = SYSTEM
+   SET_NAME = main.exe
+$  BUILD_TARGET = main.exe
+   TARGET_TYPE = Application
+   GENERATED_BY = TBMakeLogParser
+
+   # Begin Source Files
+
+     File = C:\Demo\demo-algorithms\src\sorting-algos\treap-sort.c
+     RelativeFile = .\src\sorting-algos\treap-sort.c
+     File = C:\Demo\demo-algorithms\src\sorting-algos\heap-sort.c
+     RelativeFile = .\src\sorting-algos\heap-sort.c
+     File = C:\Demo\demo-algorithms\src\data-structures\binary-search-tree.c
+     RelativeFile = .\src\data-structures\binary-search-tree.c
+     File = C:\Demo\demo-algorithms\src\sorting-algos\selection-sort.c
+     RelativeFile = .\src\sorting-algos\selection-sort.c
+     File = C:\Demo\demo-algorithms\src\sorting-algos\insertion-sort.c
+     RelativeFile = .\src\sorting-algos\insertion-sort.c
+     File = C:\Demo\demo-algorithms\src\utils\utilities.c
+     RelativeFile = .\src\utils\utilities.c
+     File = C:\Demo\demo-algorithms\src\main.c
+     RelativeFile = .\src\main.c
+
+   # End Source Files
+
+   # Begin Sysearch Include File Entries
+
+     SearchPath_4 = C:\MinGW\include
+     SearchPath_4 = C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+     SearchPath_4 = C:\MinGW\include\c++\3.2
+     SearchPath_4 = C:\MinGW\include\c++\3.2\mingw32
+     SearchPath_4 = C:\MinGW\include\c++\3.2\backward
+     SearchPath_4 = C:\MinGW\INCLUDE
+
+   # End Sysearch Include File Entries
+
+   # Begin Sysppvar Preprocessor Macros
+
+
+   # End Sysppvar Preprocessor Macros
+
+   # Begin Options
+
+     compiler_compilation_flag = -c
+     compiler_include_path_flag = -I
+     compiler_preprocess_flag = -E
+     exe_append = .exe
+     exe_dir = C:\Demo\demo-algorithms\bin
+     exe_name = main
+     gensysppvar_retcode = 0
+     gensysppvar_run = T
+     nb_build_command = make main.exe
+     nb_mechanism = build
+     nb_object_extension = .o
+     nb_start_in_dir = C:\Demo\demo-algorithms
+     nb_substitute_source = T
+
+   # End Options
+
+   # Begin Build Commands
+
+$    LinkCommand = gcc -o ./bin/main.exe ./src/main.c ./bin/treap-sort.o ./bin/heap-sort.o ./bin/binary-search-tree.o ./bin/selection-sort.o ./bin/insertion-sort.o ./bin/utilities.o -lm
+     LinkCommand = gcc -o ./bin/main.exe ./src/main.c ./bin/treap-sort.o ./bin/heap-sort.o ./bin/binary-search-tree.o ./bin/selection-sort.o ./bin/insertion-sort.o ./bin/utilities.o -lm
+     LinkCommandStartIn = C:\Demo\demo-algorithms
+
+      # Begin File Build Commands
+
+        File = C:\Demo\demo-algorithms\src\sorting-algos\treap-sort.c
+        RelativeFile = .\src\sorting-algos\treap-sort.c
+$       CompileCommand = gcc -c -g -o ./bin/treap-sort.o ./src/sorting-algos/treap-sort.c
+        CompileCommand = gcc -c -g -o ./bin/treap-sort.o ./src/sorting-algos/$(SourceStem)$(SourceDotext)
+        CompileCommandStartIn = C:\Demo\demo-algorithms
+        GenSysppvarCommand = gcc -E -g -x c $(SysppvarMacrofileQuote)
+        GenSysppvarCommandStartIn = C:\Demo\demo-algorithms
+
+      # End File Build Commands
+
+
+      # Begin File Build Commands
+
+        File = C:\Demo\demo-algorithms\src\sorting-algos\heap-sort.c
+        RelativeFile = .\src\sorting-algos\heap-sort.c
+$       CompileCommand = gcc -c -g -o ./bin/heap-sort.o ./src/sorting-algos/heap-sort.c
+        CompileCommand = gcc -c -g -o ./bin/heap-sort.o ./src/sorting-algos/$(SourceStem)$(SourceDotext)
+        CompileCommandStartIn = C:\Demo\demo-algorithms
+        GenSysppvarCommand = gcc -E -g -x c $(SysppvarMacrofileQuote)
+        GenSysppvarCommandStartIn = C:\Demo\demo-algorithms
+
+      # End File Build Commands
+
+
+      # Begin File Build Commands
+
+        File = C:\Demo\demo-algorithms\src\data-structures\binary-search-tree.c
+        RelativeFile = .\src\data-structures\binary-search-tree.c
+$       CompileCommand = gcc -c -g -o ./bin/binary-search-tree.o ./src/data-structures/binary-search-tree.c
+        CompileCommand = gcc -c -g -o ./bin/binary-search-tree.o ./src/data-structures/$(SourceStem)$(SourceDotext)
+        CompileCommandStartIn = C:\Demo\demo-algorithms
+        GenSysppvarCommand = gcc -E -g -x c $(SysppvarMacrofileQuote)
+        GenSysppvarCommandStartIn = C:\Demo\demo-algorithms
+
+      # End File Build Commands
+
+
+      # Begin File Build Commands
+
+        File = C:\Demo\demo-algorithms\src\sorting-algos\selection-sort.c
+        RelativeFile = .\src\sorting-algos\selection-sort.c
+$       CompileCommand = gcc -c -g -o ./bin/selection-sort.o ./src/sorting-algos/selection-sort.c
+        CompileCommand = gcc -c -g -o ./bin/selection-sort.o ./src/sorting-algos/$(SourceStem)$(SourceDotext)
+        CompileCommandStartIn = C:\Demo\demo-algorithms
+        GenSysppvarCommand = gcc -E -g -x c $(SysppvarMacrofileQuote)
+        GenSysppvarCommandStartIn = C:\Demo\demo-algorithms
+
+      # End File Build Commands
+
+
+      # Begin File Build Commands
+
+        File = C:\Demo\demo-algorithms\src\sorting-algos\insertion-sort.c
+        RelativeFile = .\src\sorting-algos\insertion-sort.c
+$       CompileCommand = gcc -c -g -o ./bin/insertion-sort.o ./src/sorting-algos/insertion-sort.c
+        CompileCommand = gcc -c -g -o ./bin/insertion-sort.o ./src/sorting-algos/$(SourceStem)$(SourceDotext)
+        CompileCommandStartIn = C:\Demo\demo-algorithms
+        GenSysppvarCommand = gcc -E -g -x c $(SysppvarMacrofileQuote)
+        GenSysppvarCommandStartIn = C:\Demo\demo-algorithms
+
+      # End File Build Commands
+
+
+      # Begin File Build Commands
+
+        File = C:\Demo\demo-algorithms\src\utils\utilities.c
+        RelativeFile = .\src\utils\utilities.c
+$       CompileCommand = gcc -c -g -o ./bin/utilities.o ./src/utils/utilities.c
+        CompileCommand = gcc -c -g -o ./bin/utilities.o ./src/utils/$(SourceStem)$(SourceDotext)
+        CompileCommandStartIn = C:\Demo\demo-algorithms
+        GenSysppvarCommand = gcc -E -g -x c $(SysppvarMacrofileQuote)
+        GenSysppvarCommandStartIn = C:\Demo\demo-algorithms
+
+      # End File Build Commands
+
+
+   # End Build Commands
+
+ # End Testbed Set
+
