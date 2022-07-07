@@ -180,4 +180,3 @@ int verifyMaxHeapProperties(struct tnode* rootNode) {
 
     return res;
 }
-

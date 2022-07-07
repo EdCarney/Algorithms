@@ -1,0 +1,259 @@
+---
+
+pipelineid: 47
+
+title: "Algorithms"
+
+recordstatus: "Y"
+
+project:
+  name: "V&V  Projects"
+
+release:
+  name: "Algorithms"
+
+stages:
+- title: "Prepare"
+  stageorder: 0
+  color: "#3242a8"
+  tasks:
+  - tasktitle: "Start"
+    issystemtask: true
+    suborder: 0
+    tasktype: ""
+    agent: ""
+    postcondition: ""
+    precondition: ""
+    toolInstance:
+      method: null
+      pluginName: null
+      ignorefailed: null
+      skiptask: null
+      toolDetails: null
+  - tasktitle: "Clean"
+    issystemtask: false
+    suborder: 0
+    tasktype: "Plugin"
+    agent: "LOGICPCNBK01"
+    postcondition: ""
+    precondition: ""
+    toolInstance:
+      method: "ExecuteCMDCommand"
+      pluginName: "CustomCommandPluginV.1.0"
+      ignorefailed: "N"
+      skiptask: "N"
+      toolDetails:
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "inputhostname"
+        paramvalue: ""
+        paramorder: 100
+        issecurityparam: "N"
+      - direction: "OUT"
+        paramdatatype: "SingleLineText"
+        paramname: "CommandOutput"
+        paramvalue: null
+        paramorder: 0
+        issecurityparam: "N"
+      - direction: "OUT"
+        paramdatatype: "SingleLineText"
+        paramname: "CommandStatus"
+        paramvalue: null
+        paramorder: 0
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "MultiLineText"
+        paramname: "Command"
+        paramvalue: "if exist C:\\Demo\\demo-algorithms\\ rmdir /s /q C:\\Demo\\demo-algorithms"
+        paramorder: 1
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "Error Text"
+        paramvalue: "could not delete the folder"
+        paramorder: 2
+        issecurityparam: "N"
+  - tasktitle: "LDRA TBINI"
+    issystemtask: false
+    suborder: 0
+    tasktype: "Plugin"
+    agent: "LOGICPCNBK01"
+    postcondition: ""
+    precondition: ""
+    toolInstance:
+      method: "ExecuteCMDCommand"
+      pluginName: "CustomCommandPluginV.1.0"
+      ignorefailed: "N"
+      skiptask: "N"
+      toolDetails:
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "inputhostname"
+        paramvalue: ""
+        paramorder: 100
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "MultiLineText"
+        paramname: "Command"
+        paramvalue: "set COMPILER=MinGW200 GCC C/C++ v3.2\nstart  /wait /min C:\\\
+          LDRA_Toolsuite_C_CPP_10.0.2\\TBini.exe COMPILER_SELECTED=\"%COMPILER%\"\n\
+          start  /wait /min C:\\LDRA_Toolsuite_C_CPP_10.0.2\\TBini.exe /Section=\"\
+          C/C++ %COMPILER% LDRA Testbed\" COMPILER_SELECTED=\"%COMPILER%\"\nstart\
+          \  /wait /min C:\\LDRA_Toolsuite_C_CPP_10.0.2\\TBini.exe /Section=\"C/C++\
+          \ %COMPILER% LDRA Testbed\" CSTANDARDS_MODEL=CWE-3.4\nstart  /wait /min\
+          \ C:\\LDRA_Toolsuite_C_CPP_10.0.2\\TBini.exe /Section=\"C/C++ %COMPILER%\
+          \ LDRA Testbed\" METFILE=\"C:\\Demo\\demo-algorithms\\LDRA\\Metpen.dat\""
+        paramorder: 1
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "Error Text"
+        paramvalue: ""
+        paramorder: 2
+        issecurityparam: "N"
+  - tasktitle: "Pull"
+    issystemtask: false
+    suborder: 0
+    tasktype: "Plugin"
+    agent: "LOGICPCNBK01"
+    postcondition: ""
+    precondition: ""
+    toolInstance:
+      method: "CheckOutCode"
+      pluginName: "GitHubPluginV.1.0"
+      ignorefailed: "N"
+      skiptask: "N"
+      toolDetails:
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "inputhostname"
+        paramvalue: ""
+        paramorder: 100
+        issecurityparam: "N"
+      - direction: "OUT"
+        paramdatatype: "SingleLineText"
+        paramname: "IsFilePresent"
+        paramvalue: null
+        paramorder: 0
+        issecurityparam: "N"
+      - direction: "OUT"
+        paramdatatype: "SingleLineText"
+        paramname: "GithubStatus"
+        paramvalue: null
+        paramorder: 0
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "Git Repository"
+        paramvalue: "https://github.com/ADC-GitHub/Algorithms.git"
+        paramorder: 1
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "Destination Directory"
+        paramvalue: "c:/demo/demo-algorithms"
+        paramorder: 2
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "Branch"
+        paramvalue: "master"
+        paramorder: 3
+        issecurityparam: "N"
+  - tasktitle: "Init-LDRA"
+    issystemtask: false
+    suborder: 0
+    tasktype: "Plugin"
+    agent: "LOGICPCNBK01"
+    postcondition: ""
+    precondition: ""
+    toolInstance:
+      method: "ExecuteCMDCommand"
+      pluginName: "CustomCommandPluginV.1.0"
+      ignorefailed: "N"
+      skiptask: "N"
+      toolDetails:
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "inputhostname"
+        paramvalue: ""
+        paramorder: 100
+        issecurityparam: "N"
+      - direction: "OUT"
+        paramdatatype: "SingleLineText"
+        paramname: "CommandOutput"
+        paramvalue: null
+        paramorder: 0
+        issecurityparam: "N"
+      - direction: "OUT"
+        paramdatatype: "SingleLineText"
+        paramname: "CommandStatus"
+        paramvalue: null
+        paramorder: 0
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "MultiLineText"
+        paramname: "Command"
+        paramvalue: "mkdir C:\\Demo\\demo-algorithms\\LDRA\nmkdir C:\\Demo\\demo-algorithms\\\
+          Reports\nCopy C:\\Demo\\demo-algorithms_org\\LDRA\\*.* C:\\Demo\\demo-algorithms\\\
+          LDRA\nstart /wait C:\\LDRA_Toolsuite_C_CPP_10.0.2\\contestbed devops-algorithms.exe\
+          \ -94q\nif exist C:\\LDRA_Workarea_C_CPP_10.0.2\\devops-algorithms.exe_tbwrkfls\
+          \ rmdir /s /q C:\\LDRA_Workarea_C_CPP_10.0.2\\devops-algorithms.exe_tbwrkfls\n"
+        paramorder: 1
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "Error Text"
+        paramvalue: "could not create local configuration folders"
+        paramorder: 2
+        issecurityparam: "N"
+title: "Analyse"
+  stageorder: 1
+  color: "#a9324a"
+  tasks:
+    - tasktitle: "LDRA Scan V10"
+    issystemtask: false
+    suborder: 0
+    tasktype: "Plugin"
+    agent: "LOGICPCNBK01"
+    postcondition: ""
+    precondition: ""
+    toolInstance:
+      method: "ExecuteCMDCommand"
+      pluginName: "CustomCommandPluginV.1.0"
+      ignorefailed: "N"
+      skiptask: "N"
+      toolDetails:
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "inputhostname"
+        paramvalue: ""
+        paramorder: 100
+        issecurityparam: "N"
+      - direction: "OUT"
+        paramdatatype: "SingleLineText"
+        paramname: "CommandOutput"
+        paramvalue: null
+        paramorder: 0
+        issecurityparam: "N"
+      - direction: "OUT"
+        paramdatatype: "SingleLineText"
+        paramname: "CommandStatus"
+        paramvalue: null
+        paramorder: 0
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "MultiLineText"
+        paramname: "Command"
+        paramvalue: "start /wait  C:\\LDRA_Toolsuite_C_CPP_10.0.2\\contestbed C:\\\
+          Demo\\demo-algorithms\\LDRA\\devops-algorithms.exe.tcf -95q\nstart /wait  C:\\\
+          LDRA_Toolsuite_C_CPP_10.0.2\\contestbed C:\\Demo\\demo-algorithms\\\
+          LDRA\\demo-algorithms.exe.tcf -review -CSTANDARDS_MODEL=CWE-3.4"
+        paramorder: 1
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "Error Text"
+        paramvalue: "error during LDRA scan action"
+        paramorder: 2
+        issecurityparam: "N"

@@ -1,0 +1,621 @@
+Child of 33340;21160
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	TBbuildlogger.exe
+	C:\Demo\demo-algorithms\
+	"C:\LDRA_Toolsuite_C_CPP_10.0.2\tbbuildlogger.exe" "make main.exe" 
+#
+#
+Child of 21160;21564
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	conhost.exe
+	C:\WINDOWS\
+	"\??\C:\WINDOWS\system32\conhost.exe" "0x4" 
+#
+#
+Child of 21160;18680
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	cmd.exe
+	C:\Demo\demo-algorithms\
+	"C:\WINDOWS\system32\cmd.exe" "/c" "make" "main.exe" 
+#
+#
+Child of 18680;24032
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	make.exe
+	C:\Demo\demo-algorithms\
+	"make" "main.exe" 
+#
+#
+Child of 24032;15348
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	gcc.exe
+	C:\Demo\demo-algorithms\
+	"gcc" "-c" "-g" "-o" "./bin/selection-sort.o" "./src/sorting-algos/selection-sort.c" 
+#
+#
+Child of 15348;26076
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	cc1.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\cc1.exe" "-lang-c" "-iprefix" "C:\MinGW\BIN/../lib/gcc-lib/mingw32/3.2/" "-D__GNUC__=3" "-D__GNUC_MINOR__=2" "-D__GNUC_PATCHLEVEL__=0" "-D__GXX_ABI_VERSION=102" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-DWIN32" "-D__MINGW32__" "-D__MSVCRT__" "-DWINNT" "-D_X86_=1" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-D__WIN32__" "-D__MINGW32__" "-D__MSVCRT__" "-D__WINNT__" "-D_X86_=1" "-D__WIN32" "-D__WINNT" "-Asystem=winnt" "-D__NO_INLINE__" "-D__STDC_HOSTED__=1" "-Acpu=i386" "-Amachine=i386" "-Di386" "-D__i386" "-D__i386__" "-D__tune_i586__" "-D__tune_pentium__" "-D__stdcall=__attribute__((__stdcall__))" "-D__cdecl=__attribute__((__cdecl__))" "-D__fastcall=__attribute__((__fastcall__))" "-D_stdcall=__attribute__((__stdcall__))" "-D_cdecl=__attribute__((__cdecl__))" "-D_fastcall=__attribute__((__fastcall__))" "-D__declspec(x)=__attribute__((x))" "./src/sorting-algos/selection-sort.c" "-quiet" "-dumpbase" "selection-sort.c" "-g" "-o" "C:\Users\Andre\AppData\Local\Temp/ccI9daaa.s" 
+#
+#
+Child of 15348;26076
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	cc1.exe
+	
+	
+#
+#
+Child of 15348;22512
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	as.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\..\..\..\..\mingw32\bin\as.exe" "-o" "./bin/selection-sort.o" "C:\Users\Andre\AppData\Local\Temp/ccI9daaa.s" 
+#
+#
+Child of 24032;15348
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	gcc.exe
+	
+	
+#
+#
+Child of 15348;22512
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	as.exe
+	
+	
+#
+#
+Child of 24032;17420
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	gcc.exe
+	C:\Demo\demo-algorithms\
+	"gcc" "-c" "-g" "-o" "./bin/insertion-sort.o" "./src/sorting-algos/insertion-sort.c" 
+#
+#
+Child of 17420;3256
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	cc1.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\cc1.exe" "-lang-c" "-iprefix" "C:\MinGW\BIN/../lib/gcc-lib/mingw32/3.2/" "-D__GNUC__=3" "-D__GNUC_MINOR__=2" "-D__GNUC_PATCHLEVEL__=0" "-D__GXX_ABI_VERSION=102" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-DWIN32" "-D__MINGW32__" "-D__MSVCRT__" "-DWINNT" "-D_X86_=1" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-D__WIN32__" "-D__MINGW32__" "-D__MSVCRT__" "-D__WINNT__" "-D_X86_=1" "-D__WIN32" "-D__WINNT" "-Asystem=winnt" "-D__NO_INLINE__" "-D__STDC_HOSTED__=1" "-Acpu=i386" "-Amachine=i386" "-Di386" "-D__i386" "-D__i386__" "-D__tune_i586__" "-D__tune_pentium__" "-D__stdcall=__attribute__((__stdcall__))" "-D__cdecl=__attribute__((__cdecl__))" "-D__fastcall=__attribute__((__fastcall__))" "-D_stdcall=__attribute__((__stdcall__))" "-D_cdecl=__attribute__((__cdecl__))" "-D_fastcall=__attribute__((__fastcall__))" "-D__declspec(x)=__attribute__((x))" "./src/sorting-algos/insertion-sort.c" "-quiet" "-dumpbase" "insertion-sort.c" "-g" "-o" "C:\Users\Andre\AppData\Local\Temp/cc8Geaaa.s" 
+#
+#
+Child of 17420;3256
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	cc1.exe
+	
+	
+#
+#
+Child of 17420;28136
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	as.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\..\..\..\..\mingw32\bin\as.exe" "-o" "./bin/insertion-sort.o" "C:\Users\Andre\AppData\Local\Temp/cc8Geaaa.s" 
+#
+#
+Child of 24032;17420
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	gcc.exe
+	
+	
+#
+#
+Child of 17420;28136
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	as.exe
+	
+	
+#
+#
+Child of 24032;21624
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	gcc.exe
+	C:\Demo\demo-algorithms\
+	"gcc" "-c" "-g" "-o" "./bin/utilities.o" "./src/utils/utilities.c" 
+#
+#
+Child of 21624;31396
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	cc1.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\cc1.exe" "-lang-c" "-iprefix" "C:\MinGW\BIN/../lib/gcc-lib/mingw32/3.2/" "-D__GNUC__=3" "-D__GNUC_MINOR__=2" "-D__GNUC_PATCHLEVEL__=0" "-D__GXX_ABI_VERSION=102" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-DWIN32" "-D__MINGW32__" "-D__MSVCRT__" "-DWINNT" "-D_X86_=1" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-D__WIN32__" "-D__MINGW32__" "-D__MSVCRT__" "-D__WINNT__" "-D_X86_=1" "-D__WIN32" "-D__WINNT" "-Asystem=winnt" "-D__NO_INLINE__" "-D__STDC_HOSTED__=1" "-Acpu=i386" "-Amachine=i386" "-Di386" "-D__i386" "-D__i386__" "-D__tune_i586__" "-D__tune_pentium__" "-D__stdcall=__attribute__((__stdcall__))" "-D__cdecl=__attribute__((__cdecl__))" "-D__fastcall=__attribute__((__fastcall__))" "-D_stdcall=__attribute__((__stdcall__))" "-D_cdecl=__attribute__((__cdecl__))" "-D_fastcall=__attribute__((__fastcall__))" "-D__declspec(x)=__attribute__((x))" "./src/utils/utilities.c" "-quiet" "-dumpbase" "utilities.c" "-g" "-o" "C:\Users\Andre\AppData\Local\Temp/ccWMfaaa.s" 
+#
+#
+Child of 21624;31396
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	cc1.exe
+	
+	
+#
+#
+Child of 21624;13660
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	as.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\..\..\..\..\mingw32\bin\as.exe" "-o" "./bin/utilities.o" "C:\Users\Andre\AppData\Local\Temp/ccWMfaaa.s" 
+#
+#
+Child of 24032;21624
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	gcc.exe
+	
+	
+#
+#
+Child of 21624;13660
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	as.exe
+	
+	
+#
+#
+Child of 24032;20816
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	gcc.exe
+	C:\Demo\demo-algorithms\
+	"gcc" "-c" "-g" "-o" "./bin/binary-search-tree.o" "./src/data-structures/binary-search-tree.c" 
+#
+#
+Child of 20816;28600
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	cc1.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\cc1.exe" "-lang-c" "-iprefix" "C:\MinGW\BIN/../lib/gcc-lib/mingw32/3.2/" "-D__GNUC__=3" "-D__GNUC_MINOR__=2" "-D__GNUC_PATCHLEVEL__=0" "-D__GXX_ABI_VERSION=102" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-DWIN32" "-D__MINGW32__" "-D__MSVCRT__" "-DWINNT" "-D_X86_=1" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-D__WIN32__" "-D__MINGW32__" "-D__MSVCRT__" "-D__WINNT__" "-D_X86_=1" "-D__WIN32" "-D__WINNT" "-Asystem=winnt" "-D__NO_INLINE__" "-D__STDC_HOSTED__=1" "-Acpu=i386" "-Amachine=i386" "-Di386" "-D__i386" "-D__i386__" "-D__tune_i586__" "-D__tune_pentium__" "-D__stdcall=__attribute__((__stdcall__))" "-D__cdecl=__attribute__((__cdecl__))" "-D__fastcall=__attribute__((__fastcall__))" "-D_stdcall=__attribute__((__stdcall__))" "-D_cdecl=__attribute__((__cdecl__))" "-D_fastcall=__attribute__((__fastcall__))" "-D__declspec(x)=__attribute__((x))" "./src/data-structures/binary-search-tree.c" "-quiet" "-dumpbase" "binary-search-tree.c" "-g" "-o" "C:\Users\Andre\AppData\Local\Temp/ccUzfaaa.s" 
+#
+#
+Child of 20816;28600
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	cc1.exe
+	
+	
+#
+#
+Child of 20816;14156
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	as.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\..\..\..\..\mingw32\bin\as.exe" "-o" "./bin/binary-search-tree.o" "C:\Users\Andre\AppData\Local\Temp/ccUzfaaa.s" 
+#
+#
+Child of 24032;20816
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	gcc.exe
+	
+	
+#
+#
+Child of 20816;14156
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	as.exe
+	
+	
+#
+#
+Child of 24032;2708
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	gcc.exe
+	C:\Demo\demo-algorithms\
+	"gcc" "-c" "-g" "-o" "./bin/heap-sort.o" "./src/sorting-algos/heap-sort.c" 
+#
+#
+Child of 2708;1348
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	cc1.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\cc1.exe" "-lang-c" "-iprefix" "C:\MinGW\BIN/../lib/gcc-lib/mingw32/3.2/" "-D__GNUC__=3" "-D__GNUC_MINOR__=2" "-D__GNUC_PATCHLEVEL__=0" "-D__GXX_ABI_VERSION=102" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-DWIN32" "-D__MINGW32__" "-D__MSVCRT__" "-DWINNT" "-D_X86_=1" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-D__WIN32__" "-D__MINGW32__" "-D__MSVCRT__" "-D__WINNT__" "-D_X86_=1" "-D__WIN32" "-D__WINNT" "-Asystem=winnt" "-D__NO_INLINE__" "-D__STDC_HOSTED__=1" "-Acpu=i386" "-Amachine=i386" "-Di386" "-D__i386" "-D__i386__" "-D__tune_i586__" "-D__tune_pentium__" "-D__stdcall=__attribute__((__stdcall__))" "-D__cdecl=__attribute__((__cdecl__))" "-D__fastcall=__attribute__((__fastcall__))" "-D_stdcall=__attribute__((__stdcall__))" "-D_cdecl=__attribute__((__cdecl__))" "-D_fastcall=__attribute__((__fastcall__))" "-D__declspec(x)=__attribute__((x))" "./src/sorting-algos/heap-sort.c" "-quiet" "-dumpbase" "heap-sort.c" "-g" "-o" "C:\Users\Andre\AppData\Local\Temp/ccQRaaaa.s" 
+#
+#
+Child of 2708;1348
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	cc1.exe
+	
+	
+#
+#
+Child of 2708;19892
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	as.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\..\..\..\..\mingw32\bin\as.exe" "-o" "./bin/heap-sort.o" "C:\Users\Andre\AppData\Local\Temp/ccQRaaaa.s" 
+#
+#
+Child of 24032;2708
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	gcc.exe
+	
+	
+#
+#
+Child of 2708;19892
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	as.exe
+	
+	
+#
+#
+Child of 24032;24920
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	gcc.exe
+	C:\Demo\demo-algorithms\
+	"gcc" "-c" "-g" "-o" "./bin/treap-sort.o" "./src/sorting-algos/treap-sort.c" 
+#
+#
+Child of 24920;20284
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	cc1.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\cc1.exe" "-lang-c" "-iprefix" "C:\MinGW\BIN/../lib/gcc-lib/mingw32/3.2/" "-D__GNUC__=3" "-D__GNUC_MINOR__=2" "-D__GNUC_PATCHLEVEL__=0" "-D__GXX_ABI_VERSION=102" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-DWIN32" "-D__MINGW32__" "-D__MSVCRT__" "-DWINNT" "-D_X86_=1" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-D__WIN32__" "-D__MINGW32__" "-D__MSVCRT__" "-D__WINNT__" "-D_X86_=1" "-D__WIN32" "-D__WINNT" "-Asystem=winnt" "-D__NO_INLINE__" "-D__STDC_HOSTED__=1" "-Acpu=i386" "-Amachine=i386" "-Di386" "-D__i386" "-D__i386__" "-D__tune_i586__" "-D__tune_pentium__" "-D__stdcall=__attribute__((__stdcall__))" "-D__cdecl=__attribute__((__cdecl__))" "-D__fastcall=__attribute__((__fastcall__))" "-D_stdcall=__attribute__((__stdcall__))" "-D_cdecl=__attribute__((__cdecl__))" "-D_fastcall=__attribute__((__fastcall__))" "-D__declspec(x)=__attribute__((x))" "./src/sorting-algos/treap-sort.c" "-quiet" "-dumpbase" "treap-sort.c" "-g" "-o" "C:\Users\Andre\AppData\Local\Temp/cc6Dgaaa.s" 
+#
+#
+Child of 24920;20284
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	cc1.exe
+	
+	
+#
+#
+Child of 24920;19580
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	as.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\..\..\..\..\mingw32\bin\as.exe" "-o" "./bin/treap-sort.o" "C:\Users\Andre\AppData\Local\Temp/cc6Dgaaa.s" 
+#
+#
+Child of 24920;19580
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	as.exe
+	
+	
+#
+#
+Child of 24032;31348
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	gcc.exe
+	C:\Demo\demo-algorithms\
+	"gcc" "-o" "./bin/main.exe" "./src/main.c" "./bin/treap-sort.o" "./bin/heap-sort.o" "./bin/binary-search-tree.o" "./bin/selection-sort.o" "./bin/insertion-sort.o" "./bin/utilities.o" "-lm" 
+#
+#
+Child of 31348;29000
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	cc1.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\cc1.exe" "-lang-c" "-iprefix" "C:\MinGW\BIN/../lib/gcc-lib/mingw32/3.2/" "-D__GNUC__=3" "-D__GNUC_MINOR__=2" "-D__GNUC_PATCHLEVEL__=0" "-D__GXX_ABI_VERSION=102" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-DWIN32" "-D__MINGW32__" "-D__MSVCRT__" "-DWINNT" "-D_X86_=1" "-D_WIN32" "-D__WIN32" "-D__WIN32__" "-D__WIN32__" "-D__MINGW32__" "-D__MSVCRT__" "-D__WINNT__" "-D_X86_=1" "-D__WIN32" "-D__WINNT" "-Asystem=winnt" "-D__NO_INLINE__" "-D__STDC_HOSTED__=1" "-Acpu=i386" "-Amachine=i386" "-Di386" "-D__i386" "-D__i386__" "-D__tune_i586__" "-D__tune_pentium__" "-D__stdcall=__attribute__((__stdcall__))" "-D__cdecl=__attribute__((__cdecl__))" "-D__fastcall=__attribute__((__fastcall__))" "-D_stdcall=__attribute__((__stdcall__))" "-D_cdecl=__attribute__((__cdecl__))" "-D_fastcall=__attribute__((__fastcall__))" "-D__declspec(x)=__attribute__((x))" "./src/main.c" "-quiet" "-dumpbase" "main.c" "-o" "C:\Users\Andre\AppData\Local\Temp/ccMjiaaa.s" 
+#
+#
+Child of 31348;29000
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	cc1.exe
+	
+	
+#
+#
+Child of 31348;8652
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	as.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\..\..\..\..\mingw32\bin\as.exe" "-o" "C:\Users\Andre\AppData\Local\Temp/ccotqaaa.o" "C:\Users\Andre\AppData\Local\Temp/ccMjiaaa.s" 
+#
+#
+Child of 31348;25544
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=$(SysIncludeEnv)C:\MinGW\INCLUDE;%INCLUDE%;
+	ld.exe
+	C:\Demo\demo-algorithms\
+	"C:\MinGW\BIN\..\lib\gcc-lib\mingw32\3.2\..\..\..\..\mingw32\bin\ld.exe" "-Bdynamic" "-o" "./bin/main.exe" "C:/MinGW/BIN/../lib/gcc-lib/mingw32/3.2/../../../crt2.o" "C:/MinGW/BIN/../lib/gcc-lib/mingw32/3.2/crtbegin.o" "-LC:/MinGW/BIN/../lib/gcc-lib/mingw32/3.2" "-LC:/MinGW/BIN/../lib/gcc-lib" "-L/mingw/lib/gcc-lib/mingw32/3.2" "-LC:/MinGW/BIN/../lib/gcc-lib/mingw32/3.2/../../../../mingw32/lib" "-L/mingw/lib/gcc-lib/mingw32/3.2/../../../../mingw32/lib" "-LC:/MinGW/BIN/../lib/gcc-lib/mingw32/3.2/../../.." "-L/mingw/lib/gcc-lib/mingw32/3.2/../../.." "C:\Users\Andre\AppData\Local\Temp/ccotqaaa.o" "./bin/treap-sort.o" "./bin/heap-sort.o" "./bin/binary-search-tree.o" "./bin/selection-sort.o" "./bin/insertion-sort.o" "./bin/utilities.o" "-lm" "-lmingw32" "-lgcc" "-lmoldname" "-lmingwex" "-lmsvcrt" "-luser32" "-lkernel32" "-ladvapi32" "-lshell32" "-lmingw32" "-lgcc" "-lmoldname" "-lmingwex" "-lmsvcrt" "C:/MinGW/BIN/../lib/gcc-lib/mingw32/3.2/crtend.o" 
+#
+#
+Child of 21160;18680
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	cmd.exe
+	
+	
+#
+#
+Child of 18680;24032
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\mingw32
+	ENV:INCLUDE=C:\MinGW\include\c++\3.2\backward
+	ENV:INCLUDE=C:\MinGW\include
+	ENV:INCLUDE=C:\MinGW\lib\gcc-lib\mingw32\3.2\include
+	make.exe
+	
+	
+#
+#

@@ -64,17 +64,15 @@ int readArrayFromFile(const char* fileName, double ** arrPtr, int * countPtr) {
 
 void printDoubleArray(double * array, int numElements) {
     // printf("[ ");
-int i;
-    for (i = 0; i < numElements; ++i)
+    for (int i = 0; i < numElements; ++i)
         printf("%.1f, ", array[i]);
     // printf("]\n");
     printf("\n");
 }
 
 void printIntArray(int * array, int numElements) {
-int i;
     printf("[ ");
-    for (i = 0; i < numElements; ++i)
+    for (int i = 0; i < numElements; ++i)
         printf("%d, ", array[i]);
     printf("]\n");
 }
